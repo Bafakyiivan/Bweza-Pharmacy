@@ -6,7 +6,7 @@ export const site = {
     "A community-focused pharmacy in Kibuye, Kampala, serving individuals and organisations with medicine, wellness and medical-supply enquiries.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://bwezapharmacy.com",
   location: "Kibuye, Kampala, Uganda",
-  phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "",
+  phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+256 750 664 777",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@bwezapharmacy.com",
   hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS || "",
