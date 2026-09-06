@@ -7,7 +7,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://bwezapharmacy.com",
   location: "Kibuye, Kampala, Uganda",
   phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+256 750 664 777",
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "256750664777",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@bwezapharmacy.com",
   hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS || "",
   mapEmbedUrl: process.env.NEXT_PUBLIC_MAP_EMBED_URL || "",
