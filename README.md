@@ -34,7 +34,7 @@ Run `npm run typecheck`, `npm run lint` and `npm run build` before deployment.
 
 ## Deployment
 
-The project can be imported into Vercel from GitHub. Add all environment variables in the hosting dashboard, use the default Next.js build settings, then connect `bwezapharmacy.com` after the verified business contacts and privacy workflow have been approved.
+The project can be imported into Vercel from GitHub. Add all environment variables in the hosting dashboard, use the default Next.js build settings, then connect `bwezapharmacy.org` after the verified business contacts and privacy workflow have been approved.
 
 ## Enquiry backend
 
