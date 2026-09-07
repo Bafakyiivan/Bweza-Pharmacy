@@ -24,7 +24,7 @@ Production-oriented Next.js website for **Bweza Pharmacy / Bweza Medicare Ltd** 
 | `SUPABASE_PRESCRIPTIONS_BUCKET` | Private storage bucket; defaults to `prescriptions` |
 | `RESEND_API_KEY` | Optional server-only Resend key for staff notifications |
 | `INQUIRY_NOTIFICATION_EMAIL` | Private staff inbox that receives notifications |
-| `INQUIRY_FROM_EMAIL` | Verified sender, for example `Bweza Website <website@bwezapharmacy.com>` |
+| `INQUIRY_FROM_EMAIL` | Verified sender, for example `Bweza Website <website@bwezapharmacy.org>` |
 
 Optional analytics variables are documented in `.env.example`. Tracking is disabled when IDs are blank.
 
