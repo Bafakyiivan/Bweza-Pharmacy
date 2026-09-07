@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { isExternalWhatsApp, site, whatsappHref } from "@/lib/site";
+import { Phone } from "@/components/icons";
+import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 export function Footer() {
   const wa = whatsappHref("Hello Bweza Pharmacy, I would like to make an enquiry.");
@@ -15,11 +16,12 @@ export function Footer() {
             </div>
             <div><div className="footer-title">Explore</div><div className="footer-links"><Link href="/products">Products</Link><Link href="/services">Services</Link><Link href="/about">About us</Link></div></div>
             <div><div className="footer-title">Get help</div><div className="footer-links"><Link href="/prescription">Prescription inquiry</Link><Link href="/corporate">Corporate procurement</Link><Link href="/contact">Contact</Link></div></div>
-            <div><div className="footer-title">Visit</div><div className="footer-links"><span>{site.location}</span><span>{site.hours || "Business hours: awaiting confirmation"}</span><Link href="/privacy">Privacy notice</Link></div></div>
+            <div><div className="footer-title">Visit</div><div className="footer-links"><span>{site.location}</span><a href={phoneHref()}>Call {site.phone}</a><span>{site.hours || "Business hours: awaiting confirmation"}</span><Link href="/privacy">Privacy notice</Link></div></div>
           </div>
           <div className="footer-bottom"><span>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</span><span>Health information on this site is general and does not replace professional advice.</span></div>
         </div>
       </footer>
+      <a className="call-float" href={phoneHref()} aria-label="Call Bweza Pharmacy"><Phone /></a>
       <a className="whatsapp-float" href={wa} aria-label="Contact Bweza Pharmacy on WhatsApp" target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined}>W</a>
     </>
   );
