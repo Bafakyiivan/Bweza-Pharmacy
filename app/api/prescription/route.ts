@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { text, validateBase, validWebhook } from "@/lib/validation";
+import { sendInquiryNotification } from "@/lib/notifications";
+import { deletePrivatePrescription, insertRow, isSupabaseConfigured, uploadPrivatePrescription } from "@/lib/supabase-admin";
+import { text, validateBase } from "@/lib/validation";
 
 const allowed = new Set(["image/jpeg", "image/png", "application/pdf"]);
 
@@ -13,11 +15,22 @@ export async function POST(request: Request) {
   const file = form.get("prescription");
   if (!(file instanceof File) || file.size === 0) return NextResponse.json({ message: "Please attach a prescription file." }, { status: 400 });
   if (file.size > 5_000_000 || !allowed.has(file.type)) return NextResponse.json({ message: "Use a JPEG, PNG or PDF file no larger than 5 MB." }, { status: 400 });
-  const endpoint = validWebhook(process.env.PRESCRIPTION_WEBHOOK_URL);
-  if (!endpoint) return NextResponse.json({ message: "Secure prescription delivery is awaiting final setup. Please use the confirmed pharmacy contact once published." }, { status: 503 });
-  const outgoing = new FormData();
-  outgoing.set("name", base.name); outgoing.set("phone", base.phone); outgoing.set("email", base.email); outgoing.set("message", text(form,"message",2000)); outgoing.set("consent", "yes"); outgoing.set("submittedAt", new Date().toISOString()); outgoing.set("prescription", file, file.name.replace(/[^a-zA-Z0-9._-]/g,"_"));
-  const response = await fetch(endpoint, { method: "POST", body: outgoing, signal: AbortSignal.timeout(12000), cache: "no-store" });
-  if (!response.ok) return NextResponse.json({ message: "We could not deliver the prescription enquiry. Please contact the pharmacy directly." }, { status: 502 });
+  if (!isSupabaseConfigured()) return NextResponse.json({ message: "Secure prescription delivery is awaiting final setup. Please use phone or WhatsApp." }, { status: 503 });
+  const id = crypto.randomUUID();
+  const extension = file.type === "application/pdf" ? "pdf" : file.type === "image/png" ? "png" : "jpg";
+  const path = `${new Date().toISOString().slice(0, 10)}/${id}.${extension}`;
+  const consentedAt = new Date().toISOString();
+  try {
+    await uploadPrivatePrescription(path, file);
+    try {
+      await insertRow("prescription_inquiries", { id, name: base.name, phone: base.phone, email: base.email || null, message: text(form,"message",2000) || null, storage_path: path, original_file_name: file.name.replace(/[^a-zA-Z0-9._-]/g,"_").slice(0, 180), mime_type: file.type, file_size: file.size, consented_at: consentedAt });
+    } catch (error) {
+      await deletePrivatePrescription(path);
+      throw error;
+    }
+    await sendInquiryNotification({ id, subject: "New private prescription inquiry", lines: [`Reference: ${id}`, `Name: ${base.name}`, `Phone: ${base.phone}`, "", "A private prescription file is stored in the secure bucket. It is not attached to this email."] });
+  } catch {
+    return NextResponse.json({ message: "We could not securely save the prescription inquiry. Please contact the pharmacy directly." }, { status: 502 });
+  }
   return NextResponse.json({ message: "Your prescription inquiry has been received. The pharmacy team will review it before confirming the next step." });
 }
