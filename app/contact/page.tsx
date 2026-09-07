@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { InquiryForm } from "@/components/inquiry-form";
-import { isExternalWhatsApp, site, whatsappHref } from "@/lib/site";
+import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -20,7 +20,7 @@ export default function ContactPage() {
     <section className="section"><div className="container">
       <div className="contact-cards" id="confirm-details">
         <div className="contact-card"><span>Location</span><strong>{site.location}</strong></div>
-        <div className="contact-card"><span>Phone</span><strong className={!site.phone ? "confirmation" : undefined}>{value(site.phone, "Awaiting confirmation")}</strong></div>
+        <a className="contact-card" href={phoneHref()} aria-label={`Call Bweza Pharmacy on ${site.phone}`}><span>Phone — tap to call</span><strong className={!site.phone ? "confirmation" : undefined}>{value(site.phone, "Awaiting confirmation")}</strong></a>
         <a className="contact-card" href={`mailto:${site.email}`} aria-label={`Email Bweza Pharmacy at ${site.email}`}><span>Email — tap to send</span><strong className={!site.email ? "confirmation" : undefined}>{value(site.email, "Awaiting confirmation")}</strong></a>
         <div className="contact-card"><span>Business hours</span><strong className={!site.hours ? "confirmation" : undefined}>{value(site.hours, "Awaiting confirmation")}</strong></div>
       </div>
