@@ -4,7 +4,7 @@ export const site = {
   tagline: "Walk a Healthy Life",
   description:
     "A community-focused pharmacy in Kibuye, Kampala, serving individuals and organisations with medicine, wellness and medical-supply enquiries.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bwezapharmacy.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://bwezapharmacy.org",
   location: "Kibuye, Kampala, Uganda",
   phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+256 750 664 777",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "256750664777",
