@@ -19,4 +19,8 @@ export function whatsappHref(message: string) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
+export function phoneHref() {
+  return site.phone ? `tel:${site.phone.replace(/[^+\d]/g, "")}` : "/contact";
+}
+
 export const isExternalWhatsApp = Boolean(site.whatsapp);
