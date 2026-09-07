@@ -40,6 +40,8 @@ The project can be imported into Vercel from GitHub. Add all environment variabl
 
 Run `supabase/migrations/001_enquiry_backend.sql` in the Supabase SQL editor before enabling forms. It creates enquiry tables with row-level security and a private `prescriptions` bucket. Add the Supabase environment variables in Vercel, then redeploy.
 
+The application build does not require live Supabase credentials; forms remain safely unavailable until the server-only variables are configured.
+
 The prescription route validates file type and size, generates an unguessable storage path, stores the file privately and rolls it back if the database record fails. Email notifications never attach prescription files. Before public launch, approve staff access roles and a documented retention/deletion policy.
 
 ## Content safeguards
