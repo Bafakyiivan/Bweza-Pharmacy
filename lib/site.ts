@@ -8,7 +8,7 @@ export const site = {
   location: "Kibuye, Kampala, Uganda",
   phone: process.env.NEXT_PUBLIC_PHONE_NUMBER || "+256 750 664 777",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "256750664777",
-  email: process.env.NEXT_PUBLIC_EMAIL || "info@bwezapharmacy.com",
+  email: process.env.NEXT_PUBLIC_EMAIL || "info@bwezapharmacy.org",
   hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS || "7:30 AM–11:30 PM",
   mapEmbedUrl: process.env.NEXT_PUBLIC_MAP_EMBED_URL || "",
 };
