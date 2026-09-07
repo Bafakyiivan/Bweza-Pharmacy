@@ -21,7 +21,7 @@ export default function ContactPage() {
       <div className="contact-cards" id="confirm-details">
         <div className="contact-card"><span>Location</span><strong>{site.location}</strong></div>
         <div className="contact-card"><span>Phone</span><strong className={!site.phone ? "confirmation" : undefined}>{value(site.phone, "Awaiting confirmation")}</strong></div>
-        <div className="contact-card"><span>Email</span><strong className={!site.email ? "confirmation" : undefined}>{value(site.email, "Awaiting confirmation")}</strong></div>
+        <a className="contact-card" href={`mailto:${site.email}`} aria-label={`Email Bweza Pharmacy at ${site.email}`}><span>Email — tap to send</span><strong className={!site.email ? "confirmation" : undefined}>{value(site.email, "Awaiting confirmation")}</strong></a>
         <div className="contact-card"><span>Business hours</span><strong className={!site.hours ? "confirmation" : undefined}>{value(site.hours, "Awaiting confirmation")}</strong></div>
       </div>
       {!site.phone || !site.whatsapp || !site.email || !site.hours ? <div className="notice" style={{ marginTop: 24 }}><strong>Before launch:</strong> Bweza Pharmacy must confirm its public phone number, WhatsApp number, email address and business hours. They have intentionally not been invented.</div> : null}
