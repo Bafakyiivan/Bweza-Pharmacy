@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   try {
     const record = await insertRow("inquiries", payload);
     const id = String(record.id || crypto.randomUUID());
-    await sendInquiryNotification({ id, subject: payload.kind === "corporate" ? "New corporate quotation request" : "New Bweza Pharmacy website enquiry", lines: [`Reference: ${id}`, `Name: ${base.name}`, `Phone: ${base.phone}`, `Email: ${base.email}`, `Type: ${payload.kind}`, "", message] });
+    await sendInquiryNotification({ id, kind: payload.kind });
   } catch {
     return NextResponse.json({ message: "We could not save the enquiry. Please use WhatsApp or phone." }, { status: 502 });
   }
