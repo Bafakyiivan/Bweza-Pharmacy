@@ -13,7 +13,8 @@ export async function POST(request: Request) {
   const message = text(form, "message", 2000);
   if (!message) return NextResponse.json({ message: "Please describe how we can help." }, { status: 400 });
   if (!isSupabaseConfigured()) return NextResponse.json({ message: "Online submissions are awaiting final setup. Please use phone or WhatsApp." }, { status: 503 });
-  const payload = { kind: kind === "corporate" ? "corporate" : "contact", name: base.name, phone: base.phone, email: base.email, message, organisation: text(form,"organisation",140) || null, sector: text(form,"sector",80) || null, deadline: text(form,"deadline",20) || null };
+  const notificationKind = kind === "corporate" ? "corporate" as const : "contact" as const;
+  const payload = { kind: notificationKind, name: base.name, phone: base.phone, email: base.email, message, organisation: text(form,"organisation",140) || null, sector: text(form,"sector",80) || null, deadline: text(form,"deadline",20) || null };
   try {
     const record = await insertRow("inquiries", payload);
     const id = String(record.id || crypto.randomUUID());
