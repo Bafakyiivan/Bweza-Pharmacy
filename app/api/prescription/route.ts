@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       await deletePrivatePrescription(path);
       throw error;
     }
-    await sendInquiryNotification({ id, subject: "New private prescription inquiry", lines: [`Reference: ${id}`, `Name: ${base.name}`, `Phone: ${base.phone}`, "", "A private prescription file is stored in the secure bucket. It is not attached to this email."] });
+    await sendInquiryNotification({ id, kind: "prescription" });
   } catch {
     return NextResponse.json({ message: "We could not securely save the prescription inquiry. Please contact the pharmacy directly." }, { status: 502 });
   }
