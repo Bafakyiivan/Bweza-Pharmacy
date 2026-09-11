@@ -19,7 +19,7 @@ const securityHeaders = [
       "style-src 'self' 'unsafe-inline'",
       `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://connect.facebook.net`,
       "connect-src 'self' https://www.google-analytics.com https://connect.facebook.net",
-      "frame-src https://www.google.com https://maps.google.com",
+      "frame-src https://www.google.com https://maps.google.com https://docs.google.com",
       "upgrade-insecure-requests",
     ].join("; "),
   },
