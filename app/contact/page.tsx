@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
-import { InquiryForm } from "@/components/inquiry-form";
+import { GoogleEnquiryForm } from "@/components/google-enquiry-form";
 import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function ContactPage() {
     </div></section>
     <section className="section section-soft"><div className="container form-shell">
       <div><p className="eyebrow">General enquiry</p><h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>How can we <span>help?</span></h2><p className="lead">Send a short, clear message. Do not include sensitive health information here; use the prescription route where appropriate.</p><div className="button-row"><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined}>Open WhatsApp</a></div></div>
-      <InquiryForm kind="contact" />
+      <GoogleEnquiryForm />
     </div></section>
     <section className="section"><div className="container">{site.mapEmbedUrl ? <iframe title="Map showing Bweza Pharmacy" src={site.mapEmbedUrl} width="100%" height="400" style={{ border: 0, borderRadius: 24 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="map-placeholder"><div><p className="eyebrow">Kibuye, Kampala</p><h2>Exact map pin awaiting confirmation</h2><p className="lead">The verified Google Maps location will be embedded here before launch.</p></div></div>}</div></section>
   </>;
