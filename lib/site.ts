@@ -10,7 +10,9 @@ export const site = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "256750664777",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@bwezapharmacy.org",
   hours: process.env.NEXT_PUBLIC_BUSINESS_HOURS || "7:30 AM–11:30 PM",
-  mapEmbedUrl: process.env.NEXT_PUBLIC_MAP_EMBED_URL || "",
+  mapEmbedUrl:
+    process.env.NEXT_PUBLIC_MAP_EMBED_URL ||
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7676080457277!2d32.57518327495725!3d0.28888046406727186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbdafdfa284cf%3A0xeef32a2bc9913c3f!2sBweza%20Pharmacy!5e0!3m2!1sen!2sug!4v1789154712426!5m2!1sen!2sug",
 };
 
 export function whatsappHref(message: string) {
