@@ -6,7 +6,6 @@ import { isExternalWhatsApp, phoneHref, whatsappHref } from "@/lib/site";
 const links = [
   ["Products", "/products"],
   ["Services", "/services"],
-  ["Screening", "/screening"],
   ["Prescription", "/prescription"],
   ["Corporate", "/corporate"],
   ["About", "/about"],
