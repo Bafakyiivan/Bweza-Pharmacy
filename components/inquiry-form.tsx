@@ -17,6 +17,8 @@ export function InquiryForm({ kind }: { kind: Kind }) {
       const response = await fetch(isRx ? "/api/prescription" : "/api/contact", { method: "POST", body: new FormData(form) });
       const data = await response.json() as { message?: string };
       if (!response.ok) throw new Error(data.message || "We could not send your enquiry.");
+      window.gtag?.("event", isRx ? "prescription_submission" : "enquiry_submission", { intent: kind, location: window.location.pathname });
+      window.fbq?.("trackCustom", isRx ? "prescription_submission" : "enquiry_submission", { intent: kind });
       setStatus("success"); setMessage(data.message || "Thank you. Your enquiry has been received."); form.reset();
     } catch (error) { setStatus("error"); setMessage(error instanceof Error ? error.message : "We could not send your enquiry."); }
   }
