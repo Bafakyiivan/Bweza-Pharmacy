@@ -9,63 +9,19 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  return (
-    <>
-      <PageHero
-        eyebrow="Privacy"
-        title="How we handle website enquiry information."
-        description="This notice explains how Bweza Medicare Ltd, trading as Bweza Pharmacy, handles information submitted through this website."
-      />
-      <section className="section">
-        <div className="container" style={{ maxWidth: 820 }}>
-          <p className="small"><strong>Effective date:</strong> 8 September 2026</p>
-
-          <h2>Who is responsible</h2>
-          <p className="lead">
-            Bweza Medicare Ltd, trading as Bweza Pharmacy in Kibuye, Kampala, is responsible for website enquiry information. Privacy questions and requests can be sent to{" "}
-            <a href={`mailto:${site.email}`} style={{ color: "var(--green)", fontWeight: 800 }}>{site.email}</a>.
-          </p>
-
-          <h2>Information we collect</h2>
-          <p className="lead">
-            We collect information you choose to provide, including your name, phone number, email address, enquiry message and, for corporate enquiries, organisation and supply details. The prescription form may also collect a prescription file and related message.
-          </p>
-          <p className="lead">
-            Our hosting and security services may process limited technical information, such as request time, browser information and network identifiers, to deliver and protect the website.
-          </p>
-
-          <h2>How we use it</h2>
-          <p className="lead">
-            We use submitted information to review and respond to enquiries, clarify product or supply requirements, assess prescription requests, provide customer support, prevent misuse and maintain necessary business records. We do not use a prescription upload for unrelated advertising.
-          </p>
-
-          <h2>Prescription information</h2>
-          <p className="lead">
-            Use the prescription form only for information needed by the pharmacy team. Do not upload identity documents or unrelated medical records. Prescription files are stored in a private area and are not attached to staff notification emails. This form is not for emergencies and does not guarantee supply or dispensing.
-          </p>
-
-          <h2>Service providers and access</h2>
-          <p className="lead">
-            The website uses Vercel for hosting and Supabase for private enquiry storage. Resend may be used to notify authorised pharmacy staff by email. These providers may process information outside Uganda as part of delivering their services. Access should be limited to authorised staff who need the information to respond.
-          </p>
-
-          <h2>Retention</h2>
-          <p className="lead">
-            General and corporate website enquiries are normally reviewed for deletion after 90 days. Uploaded prescription files and their website enquiry records are normally reviewed for deletion after 30 days. Relevant information may be retained for longer when an enquiry becomes a transaction, a dispute must be resolved, or applicable record-keeping obligations require it.
-          </p>
-
-          <h2>Your choices</h2>
-          <p className="lead">
-            You may ask whether we hold information submitted through the website and request access, correction or deletion where appropriate. Send the request to{" "}
-            <a href={`mailto:${site.email}?subject=Privacy%20request`} style={{ color: "var(--green)", fontWeight: 800 }}>{site.email}</a>. We may need reasonable information to identify the relevant submission before acting on a request.
-          </p>
-
-          <h2>Security and changes</h2>
-          <p className="lead">
-            We use access controls, private file storage, encrypted connections and input validation to reduce risk. No online service can guarantee absolute security. We may update this notice when website practices or service providers change and will publish the revised effective date here.
-          </p>
-        </div>
-      </section>
-    </>
-  );
+  return <>
+    <PageHero eyebrow="Privacy" title="How we handle website enquiry information." description="This notice explains how Bweza Medicare Ltd, trading as Bweza Pharmacy, handles information submitted through this website." />
+    <section className="section"><div className="container privacy-content">
+      <p className="small"><strong>Effective date:</strong> 12 September 2026</p>
+      <h2>Who is responsible</h2><p className="lead">Bweza Medicare Ltd, trading as Bweza Pharmacy in Kibuye, Kampala, is responsible for website enquiry information. Privacy questions can be sent to <a href={`mailto:${site.email}`}>{site.email}</a>.</p>
+      <h2>Information we collect</h2><p className="lead">We collect information you choose to provide, including your name, contact details, enquiry message and, for corporate enquiries, organisation and supply details. The prescription form may also collect a prescription file and related message.</p>
+      <h2>How we use it</h2><p className="lead">We use submitted information to respond to enquiries, clarify requirements, assess prescription requests, provide customer support, prevent misuse and maintain necessary business records. Prescription information is not used for unrelated advertising.</p>
+      <h2>General and corporate enquiries</h2><p className="lead">The general enquiry and corporate quotation form is provided through Google Forms. Responses may be stored in Google Forms and a linked Google Sheet that authorised Bweza Pharmacy staff use to respond and manage enquiries. Do not submit sensitive health information through that form.</p>
+      <h2>Prescription information</h2><p className="lead">Prescription files submitted through the prescription page are stored in a private Supabase storage area. They are not publicly accessible or attached to staff notification emails. Do not upload identity documents, payment information or unrelated medical records.</p>
+      <h2>Hosting, analytics and service providers</h2><p className="lead">Vercel hosts the website, Supabase provides private prescription storage, and Google provides the general and corporate enquiry form. If enabled, Google Analytics and Meta may process limited website interaction information, such as pages visited and button clicks. These services may process information outside Uganda.</p>
+      <h2>Retention and access</h2><p className="lead">Access is limited to authorised staff who need the information to respond. General and corporate enquiries are normally reviewed for deletion after 90 days. Prescription uploads and their enquiry records are normally reviewed for deletion after 30 days, unless a longer period is reasonably required for a transaction, dispute or applicable record-keeping obligation.</p>
+      <h2>Your choices</h2><p className="lead">You may ask whether we hold information you submitted and request access, correction or deletion where appropriate. Email <a href={`mailto:${site.email}?subject=Privacy%20request`}>{site.email}</a>. We may request reasonable information to locate the relevant submission.</p>
+      <h2>Security and updates</h2><p className="lead">We use encrypted connections, input validation, access controls and private file storage to reduce risk. No online service can guarantee absolute security. This notice may be updated when website practices or service providers change.</p>
+    </div></section>
+  </>;
 }
