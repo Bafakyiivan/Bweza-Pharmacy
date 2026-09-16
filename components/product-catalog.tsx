@@ -34,7 +34,7 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
           <div className="product-meta"><span>{product.category}</span><span className={`stock stock-${product.stock_status}`}>{labels[product.stock_status]}</span></div>
           <h2>{product.name}</h2>{product.pack_size ? <p className="product-pack">{product.pack_size}</p> : null}<p>{product.description}</p>
           <div className="product-price">{product.show_price && product.price_ugx ? `UGX ${product.price_ugx.toLocaleString("en-UG")}` : "Ask for price"}</div>
-          {product.requires_prescription ? <Link className="button" href="/prescription">Contact our pharmacist</Link> : <a className={`button${available ? "" : " button-secondary"}`} href={whatsappHref(message)} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="product_enquiry" data-location="product_catalogue">{available ? "Ask on WhatsApp" : "Ask about availability"}</a>}
+          {product.requires_prescription ? <Link className="button" href="/prescription">Contact our pharmacist</Link> : <a className={`button${available ? "" : " button-secondary"}`} href={whatsappHref(message)} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="product_enquiry" data-location="product_catalogue">{available ? "Order on WhatsApp" : "Ask about availability"}</a>}
         </div>
       </article>;
     })}</div> : <div className="catalog-empty"><h2>No matching products</h2><p>Try another search or category, or ask the pharmacy team on WhatsApp.</p></div>}
