@@ -5,9 +5,87 @@ import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = { title: "Corporate Procurement", description: "Request a quotation for pharmaceutical, first-aid and medical supplies from Bweza Pharmacy in Kampala.", alternates: { canonical: "/corporate" } };
 
-const buyers=["Companies","Clinics & healthcare facilities","NGOs & community programmes","Schools & institutions","Construction teams","Oil & gas contractors"];
+const buyers = [
+  {
+    title: "Businesses & workplaces",
+    description: "Workplace first-aid supplies, routine medical consumables and employee health essentials, supplied against an approved item list and quantity.",
+  },
+  {
+    title: "Clinics & healthcare facilities",
+    description: "Medicines, medical consumables and selected clinical supplies, subject to verified availability, specifications and applicable regulatory requirements.",
+  },
+  {
+    title: "NGOs & community programmes",
+    description: "Quotation support for outreach activities, community-health projects, medical kits and bulk consumable requirements.",
+  },
+  {
+    title: "Schools & institutions",
+    description: "First-aid kits, sickbay supplies, hygiene products and routine health essentials for schools and training institutions.",
+  },
+  {
+    title: "Construction & engineering firms",
+    description: "Site first-aid supplies, emergency-response consumables and scheduled replenishment based on workforce and project requirements.",
+  },
+  {
+    title: "Oil & gas contractors",
+    description: "Remote-site clinic supplies, first-aid and emergency consumables, and planned stock replenishment for field operations.",
+  },
+];
 
-export default function CorporatePage(){
+export default function CorporatePage() {
   const wa = whatsappHref("Hello Bweza Pharmacy, I am requesting a corporate quotation. Organisation: [name]. Items and quantities: [list]. Required date: [date]. Delivery location: [location].");
-  return <><PageHero eyebrow="Corporate procurement" title="A professional route for medical-supply enquiries." description="Bweza Pharmacy welcomes clear requests from organisations seeking medicines, first-aid items, wellness products and medical supplies. Submit your requirements so the team can assess availability and prepare a response." /><section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">Who we can hear from</p><h2 className="heading">Procurement support across <span>multiple sectors.</span></h2></div><p className="lead">We do not publish unverified client claims. Each request is assessed on its own requirements, quantities and timeline.</p></div><div className="grid-3">{buyers.map((x,i)=><article className="card" key={x}><div className="icon-box">{String(i+1).padStart(2,"0")}</div><h3>{x}</h3><p>Share a detailed requirement list so availability, specifications and quotation terms can be reviewed.</p></article>)}</div></div></section><section className="section section-soft"><div className="container form-shell"><div><p className="eyebrow">Request for quotation</p><h2 className="heading" style={{fontSize:"clamp(2rem,3.5vw,3rem)"}}>Tell us exactly <span>what you need.</span></h2><p className="lead">For a more useful response, include item names or specifications, quantities, delivery location and required date.</p><div className="steps"><div className="step"><strong>Submit requirements</strong><p>Provide an itemised description or summary of your supply needs.</p></div><div className="step"><strong>Requirement review</strong><p>The pharmacy team clarifies specifications and checks possible availability.</p></div><div className="step"><strong>Quotation response</strong><p>If the request can be supported, the team provides the next commercial steps.</p></div></div><div className="button-row"><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_page">Send requirements on WhatsApp</a></div></div><GoogleEnquiryForm context="corporate" /></div></section></>;
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Corporate procurement"
+        title="A professional route for medical-supply enquiries."
+        description="Bweza Pharmacy welcomes clear requests from organisations seeking medicines, first-aid items, wellness products and medical supplies. Submit your requirements so the team can assess availability and prepare a response."
+      />
+      <section className="section">
+        <div className="container">
+          <div className="section-head">
+            <div>
+              <p className="eyebrow">Who we support</p>
+              <h2 className="heading">Procurement support across <span>multiple sectors.</span></h2>
+            </div>
+            <p className="lead">Send us your item list, required quantities, delivery location and deadline. Our team will confirm availability, review specifications and prepare a formal quotation.</p>
+          </div>
+          <div className="grid-3">
+            {buyers.map((buyer, index) => (
+              <article className="card" key={buyer.title}>
+                <div className="icon-box">{String(index + 1).padStart(2, "0")}</div>
+                <h3>{buyer.title}</h3>
+                <p>{buyer.description}</p>
+              </article>
+            ))}
+          </div>
+          <div className="button-row">
+            <a className="button" href="#corporate-quotation-form">Request a Corporate Quotation</a>
+          </div>
+        </div>
+      </section>
+      <section className="section section-soft">
+        <div className="container form-shell">
+          <div>
+            <p className="eyebrow">Request for quotation</p>
+            <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>Tell us exactly <span>what you need.</span></h2>
+            <p className="lead">For a more useful response, include item names or specifications, quantities, delivery location and required date.</p>
+            <div className="steps">
+              <div className="step"><strong>Submit requirements</strong><p>Send the item names, specifications, quantities and required date.</p></div>
+              <div className="step"><strong>Availability review</strong><p>The pharmacy team clarifies specifications and checks possible availability.</p></div>
+              <div className="step"><strong>Receive quotation</strong><p>If the request can be supported, a formal quotation is prepared for your review.</p></div>
+              <div className="step"><strong>Confirm the order</strong><p>Supply and delivery arrangements are agreed before fulfilment begins.</p></div>
+            </div>
+            <div className="button-row">
+              <a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_page">Send requirements on WhatsApp</a>
+            </div>
+          </div>
+          <div id="corporate-quotation-form">
+            <GoogleEnquiryForm context="corporate" />
+          </div>
+        </div>
+      </section>
+    </>
+  );
 }
