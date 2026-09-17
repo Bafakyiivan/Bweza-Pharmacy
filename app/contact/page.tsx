@@ -5,7 +5,7 @@ import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Bweza Pharmacy in Kibuye, Kampala for product, prescription, service and corporate procurement enquiries.",
+  description: "Contact Bweza Pharmacy near Prayer Palace in Kibuye, Kampala for product, prescription, delivery and corporate procurement enquiries.",
   alternates: { canonical: "/contact" },
 };
 
@@ -30,6 +30,6 @@ export default function ContactPage() {
       <div><p className="eyebrow">General enquiry</p><h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>How can we <span>help?</span></h2><p className="lead">Send a short, clear message. Do not include sensitive health information here; use the prescription route where appropriate.</p><div className="button-row"><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="general_enquiry" data-location="contact_page">Open WhatsApp</a></div></div>
       <GoogleEnquiryForm />
     </div></section>
-    <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">Visit Bweza Pharmacy</p><h2 className="heading">Find us in <span>Kibuye, Kampala.</span></h2></div><a className="button" href={site.directionsUrl} target="_blank" rel="noreferrer" data-conversion="directions_click" data-intent="visit" data-location="map_section">Get directions</a></div>{site.mapEmbedUrl ? <iframe title="Map showing Bweza Pharmacy" src={site.mapEmbedUrl} width="100%" height="400" style={{ border: 0, borderRadius: 24 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="map-placeholder"><div><p className="eyebrow">Kibuye, Kampala</p><h2>Exact map pin awaiting confirmation</h2><p className="lead">The verified Google Maps location will be embedded here before launch.</p></div></div>}</div></section>
+    <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">Visit Bweza Pharmacy</p><h2 className="heading">Find us near <span>Prayer Palace in Kibuye.</span></h2><p className="lead">Use the verified map pin for directions to the pharmacy.</p></div><a className="button" href={site.directionsUrl} target="_blank" rel="noreferrer" data-conversion="directions_click" data-intent="visit" data-location="map_section">Get directions</a></div>{site.mapEmbedUrl ? <iframe title="Map showing Bweza Pharmacy" src={site.mapEmbedUrl} width="100%" height="400" style={{ border: 0, borderRadius: 24 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="map-placeholder"><div><p className="eyebrow">Kibuye, Kampala</p><h2>Exact map pin awaiting confirmation</h2><p className="lead">The verified Google Maps location will be embedded here before launch.</p></div></div>}</div></section>
   </>;
 }
