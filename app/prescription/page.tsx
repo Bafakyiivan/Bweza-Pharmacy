@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Message } from "@/components/icons";
+import { InquiryForm } from "@/components/inquiry-form";
 import { PageHero } from "@/components/page-hero";
 import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Prescription Review",
   description:
-    "Start a prescription request with Bweza Pharmacy on WhatsApp for pharmacist review and next-step guidance.",
+    "Start a prescription request with Bweza Pharmacy on WhatsApp or use the secure website upload for pharmacist review.",
   alternates: { canonical: "/prescription" },
   robots: { index: true, follow: true },
 };
@@ -69,13 +70,27 @@ export default function PrescriptionPage() {
                 <Message /> Start prescription request
               </a>
             </div>
-            <div className="notice" style={{ marginTop: 24 }}>
-              <strong>Secure website upload:</strong> Temporarily unavailable while we verify the complete storage and staff-retrieval workflow. Please use the WhatsApp route above.
-            </div>
             <p className="small">
               Send only the information needed for this request. Read our <Link href="/privacy">privacy notice</Link> for more information.
             </p>
           </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container form-shell">
+          <div>
+            <p className="eyebrow">Secondary option</p>
+            <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>
+              Prefer to upload through the <span>website?</span>
+            </h2>
+            <p className="lead">
+              You can still submit a clear prescription securely for review. Files are stored privately and are not attached to staff-notification emails.
+            </p>
+            <div className="notice">
+              Upload only the prescription needed for this request. Accepted formats are JPEG, PNG and PDF, with a maximum size of 5 MB.
+            </div>
+          </div>
+          <InquiryForm kind="prescription" />
         </div>
       </section>
     </>
