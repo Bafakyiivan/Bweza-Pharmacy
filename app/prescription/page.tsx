@@ -1,8 +1,83 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { Message } from "@/components/icons";
 import { PageHero } from "@/components/page-hero";
-import { InquiryForm } from "@/components/inquiry-form";
 import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Prescription Inquiry", description: "Send a private prescription inquiry to Bweza Pharmacy for review and next-step guidance.", alternates: { canonical: "/prescription" }, robots: { index: true, follow: true } };
+export const metadata: Metadata = {
+  title: "Prescription Review",
+  description:
+    "Start a prescription request with Bweza Pharmacy on WhatsApp for pharmacist review and next-step guidance.",
+  alternates: { canonical: "/prescription" },
+  robots: { index: true, follow: true },
+};
 
-export default function PrescriptionPage() { const wa=whatsappHref("Hello Bweza Pharmacy, I would like guidance about a prescription inquiry."); return <><PageHero eyebrow="Prescription inquiry" title="Send your prescription for review." description="Use this private enquiry route to upload a clear prescription securely, or contact our pharmacy team for guidance. Submitting a prescription does not confirm stock, price or supply." /><section className="section section-soft"><div className="container form-shell"><div className="info-panel"><p className="eyebrow">What happens next</p><h2 className="heading" style={{fontSize:"clamp(2rem,3.5vw,3rem)"}}>A clear, responsible <span>review process.</span></h2><div className="steps"><div className="step"><strong>Submit a clear copy</strong><p>Provide your contact details and attach only the prescription relevant to this enquiry.</p></div><div className="step"><strong>Pharmacy review</strong><p>The team reviews the request and may contact you for clarification.</p></div><div className="step"><strong>Receive the next step</strong><p>We confirm availability and explain any collection, payment or further review requirements.</p></div></div><div className="notice" style={{marginTop:30}}>Do not use this form for emergencies. Avoid uploading national IDs, financial information or unrelated medical documents.</div><div className="button-row"><a className="button button-secondary" href={wa} target={isExternalWhatsApp?"_blank":undefined} rel={isExternalWhatsApp?"noreferrer":undefined} data-conversion="whatsapp_click" data-intent="prescription_guidance" data-location="prescription_page">Use WhatsApp instead</a></div></div><InquiryForm kind="prescription" /></div></section></> }
+export default function PrescriptionPage() {
+  const prescriptionWhatsApp = whatsappHref(
+    "Hello Bweza Pharmacy. I would like to submit a prescription for pharmacist review. Please guide me on the next step.",
+  );
+
+  return (
+    <>
+      <PageHero
+        eyebrow="Prescription review"
+        title="Start your prescription request on WhatsApp."
+        description="Contact our pharmacy team for guidance and pharmacist review. Sending a prescription does not confirm stock, price or supply."
+      />
+      <section className="section section-soft">
+        <div className="container form-shell">
+          <div className="info-panel">
+            <p className="eyebrow">What happens next</p>
+            <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>
+              A clear, responsible <span>review process.</span>
+            </h2>
+            <div className="steps">
+              <div className="step">
+                <strong>Start on WhatsApp</strong>
+                <p>Open the pharmacy WhatsApp conversation and tell us that you need a prescription review.</p>
+              </div>
+              <div className="step">
+                <strong>Share only what is needed</strong>
+                <p>Send a clear prescription image when requested. Do not send identification, payment information or unrelated medical records.</p>
+              </div>
+              <div className="step">
+                <strong>Receive the next step</strong>
+                <p>After pharmacist review, the team will explain availability and any collection, payment or further review requirements.</p>
+              </div>
+            </div>
+            <div className="notice" style={{ marginTop: 30 }}>
+              <strong>Important:</strong> This service is not for emergencies. Prescription medicines require pharmacist review and a valid prescription where applicable.
+            </div>
+          </div>
+
+          <div className="form-card">
+            <p className="eyebrow">Recommended route</p>
+            <h2>Contact the pharmacy team on WhatsApp</h2>
+            <p>
+              The button opens a prefilled message so the team can guide you through the prescription-review process.
+            </p>
+            <div className="button-row">
+              <a
+                className="button button-magenta"
+                href={prescriptionWhatsApp}
+                target={isExternalWhatsApp ? "_blank" : undefined}
+                rel={isExternalWhatsApp ? "noreferrer" : undefined}
+                data-conversion="prescription_whatsapp_click"
+                data-intent="prescription_review"
+                data-location="prescription_page"
+              >
+                <Message /> Start prescription request
+              </a>
+            </div>
+            <div className="notice" style={{ marginTop: 24 }}>
+              <strong>Secure website upload:</strong> Temporarily unavailable while we verify the complete storage and staff-retrieval workflow. Please use the WhatsApp route above.
+            </div>
+            <p className="small">
+              Send only the information needed for this request. Read our <Link href="/privacy">privacy notice</Link> for more information.
+            </p>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
