@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Arrow, Building, Message, Phone, Search } from "@/components/icons";
+import { Arrow, Building, Message } from "@/components/icons";
 import { CtaBand } from "@/components/cta-band";
-import { isExternalWhatsApp, phoneHref, whatsappHref } from "@/lib/site";
+import { FeaturedProducts } from "@/components/featured-products";
+import { HeroSlider } from "@/components/hero-slider";
+import { MotionEnhancements } from "@/components/motion-enhancements";
+import { listProducts } from "@/lib/catalog";
+import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 const categories = [
   ["Rx", "Prescription medicines", "Send an enquiry for review by the pharmacy team."],
@@ -11,11 +15,16 @@ const categories = [
   ["M", "Medical supplies", "Practical health supplies and devices for personal or organisational needs."],
 ];
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const products = await listProducts().catch(() => []);
   const wa = whatsappHref("Hello Bweza Pharmacy, I would like to ask about a product or service.");
   const deliveryWa = whatsappHref("Hello Bweza Pharmacy, I would like to ask about delivery. My location is [town/district] and I need [product or prescription details].");
   return <>
-    <section className="hero"><div className="container hero-grid"><div className="hero-copy"><p className="eyebrow">Your neighbourhood pharmacy in Kibuye</p><h1 className="display">Pharmacy support that puts <span>your needs first.</span></h1><p className="lead">Talk to Bweza Pharmacy about medicines, wellness products, health services and reliable medical-supply enquiries for individuals and organisations in Kampala.</p><div className="button-row"><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="product_or_service" data-location="home_hero"><Message /> Order via WhatsApp</a><a className="button" href={phoneHref()} data-conversion="phone_click" data-intent="general" data-location="home_hero"><Phone /> Call pharmacy</a><Link className="button button-secondary" href="/products"><Search /> Browse categories</Link></div><div className="trust-inline"><span><i>✓</i> Open daily, 7:30 AM–11:30 PM</span><span><i>✓</i> Delivery enquiries across Uganda</span><span><i>✓</i> Near Prayer Palace, Kibuye</span></div></div><div className="hero-visual"><div className="hero-photo"><Image src="/images/pharmacy-interior-wide.jpg" alt="Inside Bweza Pharmacy in Kibuye, Kampala" fill sizes="(max-width: 1000px) 100vw, 46vw" priority /></div><div className="hero-card"><strong>A real local pharmacy</strong><p>Explore our categories online, then contact the team to confirm availability and the appropriate next step.</p></div></div></div></section>
+    <MotionEnhancements />
+    <HeroSlider />
+    <FeaturedProducts products={products.slice(0, 8)} />
 
     <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">What are you looking for?</p><h2 className="heading">A simpler way to start your <span>pharmacy enquiry.</span></h2></div><p className="lead">Browse key categories, then speak with the pharmacy team to confirm suitability and availability.</p></div><div className="grid-4">{categories.map(([icon,title,text])=><article className="card category-card" key={title}><div className="icon-box">{icon}</div><h3>{title}</h3><p>{text}</p><Link href="/products" className="card-link">Explore category →</Link></article>)}</div></div></section>
 
