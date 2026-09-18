@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const photos = [
-  { src: "/images/pharmacy-interior-wide.jpg", alt: "Inside Bweza Pharmacy in Kibuye, Kampala" },
-  { src: "/images/pharmacy-shelves.jpg", alt: "Shelves inside Bweza Pharmacy" },
-  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy counter" },
+  { src: "/images/pharmacy-interior-wide.jpg", alt: "Inside Bweza Pharmacy in Kibuye, Kampala", label: "Visit", title: "Find us in Kibuye", detail: "Near Prayer Palace, Kampala." },
+  { src: "/images/pharmacy-shelves.jpg", alt: "Shelves inside Bweza Pharmacy", label: "Hours", title: "Open daily", detail: "7:30 AM–11:30 PM." },
+  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy counter", label: "About", title: "A local pharmacy", detail: "Operated by Bweza Medicare Ltd." },
 ];
 
 export function HeroPhotoSlider() {
@@ -24,7 +24,7 @@ export function HeroPhotoSlider() {
   return (
     <div
       className="hero-visual hero-photo-slider"
-      aria-label="Photos of Bweza Pharmacy"
+      aria-label="Bweza Pharmacy information slides"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}
@@ -39,10 +39,10 @@ export function HeroPhotoSlider() {
           </div>
         ))}
       </div>
-      <div className="hero-card"><strong>A real local pharmacy</strong><p>Explore our categories online, then contact the team to confirm availability and the appropriate next step.</p></div>
-      <div className="hero-photo-controls" aria-label="Choose a pharmacy photo">
+      <div className="hero-card"><strong>{photos[active].title}</strong><p>{photos[active].detail}</p></div>
+      <div className="hero-photo-controls" aria-label="Choose an information slide">
         {photos.map((photo, index) => (
-          <button key={photo.src} type="button" className={index === active ? "is-active" : ""} aria-label={`Show photo ${index + 1} of ${photos.length}`} aria-pressed={index === active} onClick={() => setActive(index)} />
+          <button key={photo.src} type="button" className={index === active ? "is-active" : ""} aria-label={`Show ${photo.label} slide`} aria-pressed={index === active} onClick={() => setActive(index)}><span>{String(index + 1).padStart(2, "0")}</span> {photo.label}</button>
         ))}
       </div>
     </div>

@@ -266,9 +266,11 @@ img { max-width: 100%; }
 .hero-photo-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
 .hero-photo-slide.is-active { opacity: 1; visibility: visible; }
 .hero-photo-slide img { object-fit: cover; }
-.hero-photo-controls { position: absolute; right: 18px; bottom: 56px; z-index: 3; display: flex; gap: 9px; }
-.hero-photo-controls button { width: 15px; height: 15px; padding: 0; border: 2px solid white; border-radius: 50%; background: rgba(16, 37, 28, .55); cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .2); }
-.hero-photo-controls button.is-active { background: white; }
+.hero-photo-controls { position: absolute; left: 0; right: 0; bottom: -50px; z-index: 3; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.hero-photo-controls button { min-height: 44px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); font-weight: 800; cursor: pointer; box-shadow: 0 4px 14px rgba(8, 54, 32, .08); transition: background .2s ease, color .2s ease, transform .2s ease; }
+.hero-photo-controls button:hover { transform: translateY(-2px); }
+.hero-photo-controls button.is-active { background: var(--green); color: white; border-color: var(--green); }
+.hero-photo-controls button span { font-size: .7rem; opacity: .78; margin-right: 5px; }
 .hero-photo-controls button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -279,5 +281,6 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 680px) {
-  .hero-photo-controls { right: 14px; bottom: 50px; }
+  .hero-photo-controls { bottom: -45px; gap: 6px; }
+  .hero-photo-controls button { padding: 8px 12px; font-size: .84rem; }
 }
