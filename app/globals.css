@@ -260,3 +260,24 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Homepage visual motion: photos and section entrances only. */
+.hero-photo-slider .hero-photo { isolation: isolate; }
+.hero-photo-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .7s ease, visibility .7s; }
+.hero-photo-slide.is-active { opacity: 1; visibility: visible; }
+.hero-photo-slide img { object-fit: cover; }
+.hero-photo-controls { position: absolute; right: 18px; bottom: 56px; z-index: 3; display: flex; gap: 9px; }
+.hero-photo-controls button { width: 15px; height: 15px; padding: 0; border: 2px solid white; border-radius: 50%; background: rgba(16, 37, 28, .55); cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .2); }
+.hero-photo-controls button.is-active { background: white; }
+.hero-photo-controls button:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .motion-reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .card-link { transition: color .2s ease, transform .2s ease; }
+  .card-link:hover { transform: translateX(4px); }
+}
+
+@media (max-width: 680px) {
+  .hero-photo-controls { right: 14px; bottom: 50px; }
+}
