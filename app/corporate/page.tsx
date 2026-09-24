@@ -13,7 +13,7 @@ const sectors = [
   {
     title: "Businesses & workplaces",
     description: "Workplace first-aid kits, routine medical consumables and employee health essentials.",
-    image: "/images/corporate/workplaces.svg",
+    image: "/images/corporate/businesses-workplaces.webp",
     alt: "Workplace building with a first-aid supply kit",
   },
   {
@@ -109,7 +109,7 @@ export default function CorporatePage() {
             {sectors.map((sector) => (
               <article className="card corporate-sector-card" key={sector.title}>
                 <div className="corporate-sector-image">
-                  <Image src={sector.image} alt={sector.alt} fill unoptimized sizes="(max-width: 680px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+                  <Image src={sector.image} alt={sector.alt} fill unoptimized={sector.image.endsWith(".svg")} sizes="(max-width: 680px) 100vw, (max-width: 1000px) 50vw, 33vw" />
                 </div>
                 <div className="corporate-sector-body">
                   <h3>{sector.title}</h3>
