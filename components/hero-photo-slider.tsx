@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const photos = [
-  { src: "/images/pharmacy-interior-wide.jpg", alt: "Inside Bweza Pharmacy in Kibuye, Kampala" },
-  { src: "/images/pharmacy-shelves.jpg", alt: "Shelves inside Bweza Pharmacy" },
-  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy counter" },
+  { src: "/images/pharmacy-interior-wide.jpg", alt: "Bweza Pharmacy team serving customers in Kibuye, Kampala" },
+  { src: "/images/pharmacy-shelves.jpg", alt: "Bright, well-stocked interior of Bweza Pharmacy in Kibuye" },
+  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy team inside the Kibuye pharmacy" },
 ];
 
 export function HeroPhotoSlider() {
