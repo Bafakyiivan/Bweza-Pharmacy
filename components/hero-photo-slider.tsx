@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const photos = [
-  { src: "/images/pharmacy-interior-wide.jpg", alt: "Bweza Pharmacy team serving customers in Kibuye, Kampala" },
-  { src: "/images/pharmacy-shelves.jpg", alt: "Bright, well-stocked interior of Bweza Pharmacy in Kibuye" },
-  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy team inside the Kibuye pharmacy" },
+  { src: "/images/pharmacy-interior-wide.jpg", alt: "Bweza Pharmacy team serving customers in Kibuye, Kampala", showFull: true },
+  { src: "/images/pharmacy-shelves.jpg", alt: "Bright, well-stocked interior of Bweza Pharmacy in Kibuye", showFull: false },
+  { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy team inside the Kibuye pharmacy", showFull: true },
 ];
 
 export function HeroPhotoSlider() {
@@ -34,7 +34,7 @@ export function HeroPhotoSlider() {
     >
       <div className="hero-photo">
         {photos.map((photo, index) => (
-          <div className={`hero-photo-slide${index === active ? " is-active" : ""}`} aria-hidden={index !== active} key={photo.src}>
+          <div className={`hero-photo-slide${index === active ? " is-active" : ""}${photo.showFull ? " show-full-image" : ""}`} aria-hidden={index !== active} key={photo.src}>
             <Image src={photo.src} alt={index === active ? photo.alt : ""} fill sizes="(max-width: 1000px) 100vw, 46vw" priority={index === 0} />
           </div>
         ))}
