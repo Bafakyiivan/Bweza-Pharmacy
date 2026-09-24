@@ -39,17 +39,17 @@ export default function CorporatePage() {
     <>
       <PageHero
         eyebrow="Corporate procurement"
-        title="A professional route for medical-supply enquiries."
-        description="Bweza Pharmacy welcomes clear requests from organisations seeking medicines, first-aid items, wellness products and medical supplies. Submit your requirements so the team can assess availability and prepare a response."
+        title="Corporate medical supplies."
+        description="Request medicines, first-aid items and medical supplies for your organisation."
       />
       <section className="section">
         <div className="container">
           <div className="section-head">
             <div>
               <p className="eyebrow">Who we support</p>
-              <h2 className="heading">Procurement support across <span>multiple sectors.</span></h2>
+              <h2 className="heading">Supply support for <span>your sector.</span></h2>
             </div>
-            <p className="lead">Send us your item list, required quantities, delivery location and deadline. Our team will confirm availability, review specifications and prepare a formal quotation.</p>
+            <p className="lead">Send item names, quantities, location and required date.</p>
           </div>
           <div className="grid-3">
             {buyers.map((buyer, index) => (
@@ -70,12 +70,12 @@ export default function CorporatePage() {
           <div>
             <p className="eyebrow">Request for quotation</p>
             <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>Tell us exactly <span>what you need.</span></h2>
-            <p className="lead">For a more useful response, include item names or specifications, quantities, delivery location and required date.</p>
+            <p className="lead">Include item names, quantities, delivery location and required date.</p>
             <div className="steps">
-              <div className="step"><strong>Submit requirements</strong><p>Send the item names, specifications, quantities and required date.</p></div>
-              <div className="step"><strong>Availability review</strong><p>The pharmacy team clarifies specifications and checks possible availability.</p></div>
-              <div className="step"><strong>Receive quotation</strong><p>If the request can be supported, a formal quotation is prepared for your review.</p></div>
-              <div className="step"><strong>Confirm the order</strong><p>Supply and delivery arrangements are agreed before fulfilment begins.</p></div>
+              <div className="step"><strong>Submit requirements</strong><p>Send your item list and quantities.</p></div>
+              <div className="step"><strong>Availability review</strong><p>We check specifications and stock.</p></div>
+              <div className="step"><strong>Receive quotation</strong><p>We prepare a formal quotation.</p></div>
+              <div className="step"><strong>Confirm the order</strong><p>Approve the order and delivery plan.</p></div>
             </div>
             <div className="button-row">
               <a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_page">Send requirements on WhatsApp</a>
