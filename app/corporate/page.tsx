@@ -25,7 +25,7 @@ const sectors = [
   {
     title: "NGOs & community programmes",
     description: "Outreach medical kits, community-health supplies and bulk consumables.",
-    image: "/images/corporate/ngos.svg",
+    image: "/images/corporate/ngos-community-programmes.webp",
     alt: "Community outreach team with organised medical kits",
   },
   {
