@@ -22,28 +22,28 @@ export default function PrescriptionPage() {
     <>
       <PageHero
         eyebrow="Prescription review"
-        title="Start your prescription request on WhatsApp."
-        description="Contact our pharmacy team for guidance and pharmacist review. Sending a prescription does not confirm stock, price or supply."
+        title="Prescription review on WhatsApp."
+        description="Send a valid prescription when requested. Stock and pricing are confirmed after pharmacist review."
       />
       <section className="section section-soft">
         <div className="container form-shell">
           <div className="info-panel">
             <p className="eyebrow">What happens next</p>
             <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>
-              A clear, responsible <span>review process.</span>
+              Three simple <span>steps.</span>
             </h2>
             <div className="steps">
               <div className="step">
                 <strong>Start on WhatsApp</strong>
-                <p>Open the pharmacy WhatsApp conversation and tell us that you need a prescription review.</p>
+                <p>Open WhatsApp and request a prescription review.</p>
               </div>
               <div className="step">
                 <strong>Share only what is needed</strong>
-                <p>Send a clear prescription image when requested. Do not send identification, payment information or unrelated medical records.</p>
+                <p>Send only the requested prescription image—never IDs or payment details.</p>
               </div>
               <div className="step">
                 <strong>Receive the next step</strong>
-                <p>After pharmacist review, the team will explain availability and any collection, payment or further review requirements.</p>
+                <p>We will confirm stock, price and collection or delivery.</p>
               </div>
             </div>
             <div className="notice" style={{ marginTop: 30 }}>
@@ -55,7 +55,7 @@ export default function PrescriptionPage() {
             <p className="eyebrow">Recommended route</p>
             <h2>Contact the pharmacy team on WhatsApp</h2>
             <p>
-              The button opens a prefilled message so the team can guide you through the prescription-review process.
+              Open a ready-made WhatsApp message to begin.
             </p>
             <div className="button-row">
               <a
@@ -84,10 +84,10 @@ export default function PrescriptionPage() {
               Prefer to upload through the <span>website?</span>
             </h2>
             <p className="lead">
-              You can still submit a clear prescription securely for review. Files are stored privately and are not attached to staff-notification emails.
+              Upload a clear prescription securely. Files remain private.
             </p>
             <div className="notice">
-              Upload only the prescription needed for this request. Accepted formats are JPEG, PNG and PDF, with a maximum size of 5 MB.
+              JPEG, PNG or PDF only. Maximum size: 5 MB.
             </div>
           </div>
           <InquiryForm kind="prescription" />
