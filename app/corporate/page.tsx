@@ -19,7 +19,7 @@ const sectors = [
   {
     title: "Clinics & healthcare facilities",
     description: "Medicines, medical consumables and selected clinical supplies.",
-    image: "/images/corporate/clinics.svg",
+    image: "/images/corporate/clinics-healthcare-facilities.webp",
     alt: "Clinic building with medicines and medical supplies",
   },
   {
