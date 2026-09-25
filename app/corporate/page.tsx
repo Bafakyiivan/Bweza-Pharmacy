@@ -43,8 +43,8 @@ const sectors = [
   {
     title: "Oil & gas operations",
     description: "Remote-site clinic supplies, emergency consumables and field medical kits.",
-    image: "/images/corporate/oil-gas.svg",
-    alt: "Oil and gas field site with remote medical supplies",
+    image: "/images/corporate/oil-gas-operations.webp",
+    alt: "Oil and gas field team reviewing remote-site medical and emergency supplies",
   },
 ];
 
