@@ -70,7 +70,7 @@ export default function CorporatePage() {
             <h1 className="display">Reliable supply support for <span>your organisation.</span></h1>
             <p className="lead">Request medicines, first-aid items and medical supplies from Bweza Pharmacy in Kibuye, Kampala.</p>
             <div className="button-row">
-              <a className="button button-magenta" href="#corporate-quotation-form">Request a quotation</a>
+              <a className="button button-magenta" href="/corporate/request">Request a quotation</a>
               <a className="button button-secondary" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_hero">Send list on WhatsApp</a>
             </div>
             <div className="trust-inline">
@@ -117,7 +117,7 @@ export default function CorporatePage() {
                 <div className="corporate-sector-body">
                   <h3>{sector.title}</h3>
                   <p>{sector.description}</p>
-                  <a className="card-link" href="#corporate-quotation-form">Request supplies →</a>
+                  <a className="card-link" href="/corporate/request">Request supplies →</a>
                 </div>
               </article>
             ))}
