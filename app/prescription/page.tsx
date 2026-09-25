@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Message } from "@/components/icons";
 import { InquiryForm } from "@/components/inquiry-form";
 import { PageHero } from "@/components/page-hero";
-import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
+import { emailHref, isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Prescription Review",
@@ -16,6 +16,10 @@ export const metadata: Metadata = {
 export default function PrescriptionPage() {
   const prescriptionWhatsApp = whatsappHref(
     "Hello Bweza Pharmacy. I would like to submit a prescription for pharmacist review. Please guide me on the next step.",
+  );
+  const prescriptionEmail = emailHref(
+    "Prescription Review Request",
+    "Name: [name]\nTelephone: [number]\nMedicine enquiry: [details]\nCollection or delivery location: [location]\n\nIf attaching a prescription, send only what is necessary. Do not include identification or payment details.",
   );
 
   return (
@@ -52,12 +56,21 @@ export default function PrescriptionPage() {
           </div>
 
           <div className="form-card">
-            <p className="eyebrow">Recommended route</p>
-            <h2>Contact the pharmacy team on WhatsApp</h2>
+            <p className="eyebrow">Contact options</p>
+            <h2>Email or WhatsApp the pharmacy team</h2>
             <p>
-              Open a ready-made WhatsApp message to begin.
+              Choose email or open a ready-made WhatsApp message to begin.
             </p>
             <div className="button-row">
+              <a
+                className="button button-secondary"
+                href={prescriptionEmail}
+                data-conversion="prescription_email_click"
+                data-intent="prescription_review"
+                data-location="prescription_page"
+              >
+                Email prescription enquiry
+              </a>
               <a
                 className="button button-magenta"
                 href={prescriptionWhatsApp}
@@ -71,7 +84,7 @@ export default function PrescriptionPage() {
               </a>
             </div>
             <p className="small">
-              Send only the information needed for this request. Read our <Link href="/privacy">privacy notice</Link> for more information.
+              Email may not be encrypted. Send only what is needed—never identification or payment details. Read our <Link href="/privacy">privacy notice</Link> for more information.
             </p>
           </div>
         </div>
