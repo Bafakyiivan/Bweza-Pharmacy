@@ -26,9 +26,10 @@ export function whatsappHref(message: string) {
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
 
-export function emailHref(subject: string, body: string) {
+export function emailHref(subject: string, body?: string) {
   if (!site.email) return "/contact#confirm-details";
-  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const bodyParameter = body ? `&body=${encodeURIComponent(body)}` : "";
+  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}${bodyParameter}`;
 }
 
 export function phoneHref() {
