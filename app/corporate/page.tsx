@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { GoogleEnquiryForm } from "@/components/google-enquiry-form";
-import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
+import { emailHref, isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Corporate Medical Supplies",
@@ -57,6 +57,10 @@ const assurances = [
 
 export default function CorporatePage() {
   const wa = whatsappHref("Hello Bweza Pharmacy, I am requesting a corporate quotation. Organisation: [name]. Items and quantities: [list]. Required date: [date]. Delivery location: [location].");
+  const corporateEmail = emailHref(
+    "Corporate Quotation Request",
+    "Organisation: [name]\nContact person: [name]\nTelephone: [number]\nItems and quantities: [list]\nRequired date: [date]\nDelivery location: [location]\nAdditional requirements: [details]",
+  );
 
   return (
     <>
@@ -148,6 +152,7 @@ export default function CorporatePage() {
             <p className="lead">Include item names, quantities, delivery location and required date.</p>
             <div className="notice"><strong>Please note:</strong> Supply is subject to availability, pharmacist review and applicable regulatory requirements.</div>
             <div className="button-row">
+              <a className="button button-secondary" href={corporateEmail} data-conversion="email_click" data-intent="corporate_quotation" data-location="corporate_form">Email requirements</a>
               <a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_form">Send requirements on WhatsApp</a>
             </div>
           </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/page-hero";
 import { GoogleEnquiryForm } from "@/components/google-enquiry-form";
-import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
+import { emailHref, isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -15,6 +15,10 @@ function value(currentValue: string, fallback: string) {
 
 export default function ContactPage() {
   const wa = whatsappHref("Hello Bweza Pharmacy, I would like to make an enquiry.");
+  const generalEmail = emailHref(
+    "General Pharmacy Enquiry",
+    "Name: [name]\nTelephone: [number]\nEnquiry: [details]\nPreferred response method: [email or phone]",
+  );
   return <>
     <PageHero eyebrow="Contact" title="Talk to Bweza Pharmacy." description="Call, WhatsApp, email or visit us in Kibuye." />
     <section className="section"><div className="container">
@@ -27,7 +31,7 @@ export default function ContactPage() {
       {!site.phone || !site.whatsapp || !site.email || !site.hours ? <div className="notice" style={{ marginTop: 24 }}><strong>Before launch:</strong> Bweza Pharmacy must confirm its public phone number, WhatsApp number, email address and business hours. They have intentionally not been invented.</div> : null}
     </div></section>
     <section className="section section-soft"><div className="container form-shell">
-      <div><p className="eyebrow">General enquiry</p><h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>How can we <span>help?</span></h2><p className="lead">Send a short message. Use the prescription page for prescription uploads.</p><div className="button-row"><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="general_enquiry" data-location="contact_page">Open WhatsApp</a></div></div>
+      <div><p className="eyebrow">General enquiry</p><h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>How can we <span>help?</span></h2><p className="lead">Send a short message. Use the prescription page for prescription uploads.</p><div className="button-row"><a className="button button-secondary" href={generalEmail} data-conversion="email_click" data-intent="general_enquiry" data-location="contact_page">Email your enquiry</a><a className="button button-magenta" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="general_enquiry" data-location="contact_page">Open WhatsApp</a></div></div>
       <GoogleEnquiryForm />
     </div></section>
     <section className="section"><div className="container"><div className="section-head"><div><p className="eyebrow">Visit Bweza Pharmacy</p><h2 className="heading">Find us near <span>Prayer Palace in Kibuye.</span></h2><p className="lead">Open Google Maps for directions.</p></div><a className="button" href={site.directionsUrl} target="_blank" rel="noreferrer" data-conversion="directions_click" data-intent="visit" data-location="map_section">Get directions</a></div>{site.mapEmbedUrl ? <iframe title="Map showing Bweza Pharmacy" src={site.mapEmbedUrl} width="100%" height="400" style={{ border: 0, borderRadius: 24 }} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="map-placeholder"><div><p className="eyebrow">Kibuye, Kampala</p><h2>Exact map pin awaiting confirmation</h2><p className="lead">The verified Google Maps location will be embedded here before launch.</p></div></div>}</div></section>
