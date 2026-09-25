@@ -31,8 +31,8 @@ const sectors = [
   {
     title: "Schools & institutions",
     description: "First-aid kits, sickbay supplies, hygiene products and health essentials.",
-    image: "/images/corporate/schools.svg",
-    alt: "School building with first-aid and health supplies",
+    image: "/images/corporate/schools-institutions.webp",
+    alt: "School administrators reviewing first-aid, sickbay and hygiene supplies",
   },
   {
     title: "Construction & engineering",
