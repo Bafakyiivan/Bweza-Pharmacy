@@ -37,8 +37,8 @@ const sectors = [
   {
     title: "Construction & engineering",
     description: "Site first-aid supplies, emergency consumables and planned replenishment.",
-    image: "/images/corporate/construction.svg",
-    alt: "Construction safety equipment with a first-aid kit",
+    image: "/images/corporate/construction-engineering.webp",
+    alt: "Construction and engineering team reviewing site first-aid and emergency supplies",
   },
   {
     title: "Oil & gas operations",
