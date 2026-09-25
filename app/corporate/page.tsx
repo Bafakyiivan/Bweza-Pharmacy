@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { GoogleEnquiryForm } from "@/components/google-enquiry-form";
+import { SectionReveals } from "@/components/section-reveals";
 import { emailHref, isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -61,6 +62,7 @@ export default function CorporatePage() {
 
   return (
     <>
+      <SectionReveals />
       <section className="corporate-hero">
         <div className="container corporate-hero-grid">
           <div className="corporate-hero-copy">
