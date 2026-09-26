@@ -7,6 +7,7 @@ const photos = [
   { src: "/images/pharmacy-interior-wide.jpg", alt: "Bweza Pharmacy team serving customers in Kibuye, Kampala", showFull: true },
   { src: "/images/pharmacy-shelves.jpg", alt: "Bright, well-stocked interior of Bweza Pharmacy in Kibuye", showFull: false },
   { src: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy team inside the Kibuye pharmacy", showFull: true },
+  { src: "/images/bweza-pharmacy-staff.webp", alt: "Bweza Pharmacy staff member welcoming customers inside the Kibuye pharmacy", showFull: true },
 ];
 
 export function HeroPhotoSlider() {
