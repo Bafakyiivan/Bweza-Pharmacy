@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDeferredValue, useMemo, useState } from "react";
 import type { CatalogProduct } from "@/lib/catalog";
-import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
+import { emailHref, isExternalWhatsApp, phoneHref, whatsappHref } from "@/lib/site";
 
 const labels = { in_stock: "In stock", low_stock: "Low stock", out_of_stock: "Out of stock", coming_soon: "Coming soon" };
 
@@ -18,6 +18,9 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
     const text = `${product.name} ${product.category} ${product.description} ${product.pack_size || ""}`.toLowerCase();
     return matchesCategory && (!deferredQuery || text.includes(deferredQuery));
   }), [category, deferredQuery, products]);
+  const searchedName = query.trim();
+  const pharmacistMessage = `Hello Bweza Pharmacy, I am looking for ${searchedName || "[medicine name]"}. I understand prescription medicines are not listed in the public catalogue and require pharmacist review. Please advise me how to submit my prescription.`;
+  const prescriptionEmail = emailHref("Prescription medicine enquiry");
 
   return <>
     <div className="catalog-tools" aria-label="Catalogue filters">
@@ -37,6 +40,14 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
           {product.requires_prescription ? <Link className="button" href="/prescription">Contact our pharmacist</Link> : <a className={`button${available ? "" : " button-secondary"}`} href={whatsappHref(message)} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="product_enquiry" data-location="product_catalogue">{available ? "Order on WhatsApp" : "Ask about availability"}</a>}
         </div>
       </article>;
-    })}</div> : <div className="catalog-empty"><h2>No matching products</h2><p>Try another search or category, or ask the pharmacy team on WhatsApp.</p></div>}
+    })}</div> : <div className="catalog-empty">
+      <h2>Prescription medicine or product not listed?</h2>
+      <p><strong>Prescription medicines are intentionally not displayed in the public catalogue.</strong> Contact our pharmacy team for a private pharmacist review. A valid prescription may be required before supply.</p>
+      <div className="button-row" style={{ justifyContent: "center" }}>
+        <a className="button button-magenta" href={whatsappHref(pharmacistMessage)} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="prescription_enquiry" data-location="catalog_empty">WhatsApp pharmacist</a>
+        <a className="button" href={phoneHref()} data-conversion="phone_click" data-intent="prescription_enquiry" data-location="catalog_empty">Call pharmacy</a>
+        <a className="button button-secondary" href={prescriptionEmail} data-conversion="email_click" data-intent="prescription_enquiry" data-location="catalog_empty">Email pharmacy</a>
+      </div>
+    </div>}
   </>;
 }
