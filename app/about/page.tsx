@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
 
-export const metadata: Metadata = { title: "About Us", description: "Learn about Bweza Pharmacy and Bweza Medicare Ltd, a community-focused pharmacy business in Kibuye, Kampala.", alternates: { canonical: "/about" }   openGraph: { title: "About Bweza Pharmacy", description: "Learn about Bweza Pharmacy and Bweza Medicare Ltd in Kibuye, Kampala.", url: "/about", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+export const metadata: Metadata = { title: "About Us", description: "Learn about Bweza Pharmacy and Bweza Medicare Ltd, a community-focused pharmacy business in Kibuye, Kampala.", alternates: { canonical: "/about" }   , openGraph: { title: "About Bweza Pharmacy", description: "Learn about Bweza Pharmacy and Bweza Medicare Ltd in Kibuye, Kampala.", url: "/about", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
   twitter: { card: "summary_large_image", title: "About Bweza Pharmacy", description: "Learn about Bweza Pharmacy and Bweza Medicare Ltd in Kibuye, Kampala.", images: ["/images/pharmacy-counter.jpg"] },
 };
 
