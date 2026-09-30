@@ -20,6 +20,10 @@ export function ConversionTracker() {
       const eventName = link.dataset.conversion;
       if (!eventName) return;
 
+      if (link instanceof HTMLAnchorElement && link.href.startsWith("https://wa.me/")) {
+        event.stopImmediatePropagation();
+      }
+
       const parameters = {
         intent: link.dataset.intent || "general",
         location: link.dataset.location || window.location.pathname,
