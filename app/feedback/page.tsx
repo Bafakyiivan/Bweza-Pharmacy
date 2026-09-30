@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Client Feedback",
   description: "Share feedback about your experience with Bweza Pharmacy in Kibuye, Kampala.",
   alternates: { canonical: "/feedback" },
+  robots: { index: false, follow: true },
 };
 
 export default function FeedbackPage() {
