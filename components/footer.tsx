@@ -21,8 +21,10 @@ export function Footer() {
           <div className="footer-bottom"><span>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</span><span>Health information on this site is general and does not replace professional advice.</span></div>
         </div>
       </footer>
-      <a className="call-float" href={phoneHref()} aria-label="Call Bweza Pharmacy" data-conversion="phone_click" data-intent="general" data-location="floating_button"><Phone /></a>
-      <a className="whatsapp-float" href={wa} aria-label="Contact Bweza Pharmacy on WhatsApp" target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="general" data-location="floating_button">W</a>
+      <div className="mobile-contact-actions" aria-label="Quick contact">
+        <a className="call-float" href={phoneHref()} aria-label="Call Bweza Pharmacy" data-conversion="phone_click" data-intent="general" data-location="floating_button"><Phone /><span>Call</span></a>
+        <a className="whatsapp-float" href={wa} aria-label="Contact Bweza Pharmacy on WhatsApp" target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="general" data-location="floating_button"><b>W</b><span>WhatsApp</span></a>
+      </div>
     </>
   );
 }
