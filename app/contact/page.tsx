@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Contact",
   description: "Contact Bweza Pharmacy in Kibuye, Kampala for products, prescriptions, delivery and corporate supplies.",
   alternates: { canonical: "/contact" },
+  openGraph: { title: "Contact Bweza Pharmacy", description: "Call, WhatsApp, email or visit Bweza Pharmacy in Kibuye, Kampala.", url: "/contact", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Contact Bweza Pharmacy", description: "Call, WhatsApp, email or visit Bweza Pharmacy in Kibuye, Kampala.", images: ["/images/pharmacy-counter.jpg"] },
 };
 
 function value(currentValue: string, fallback: string) {
