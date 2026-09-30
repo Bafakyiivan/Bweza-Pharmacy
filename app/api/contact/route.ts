@@ -2,8 +2,11 @@ import { NextResponse } from "next/server";
 import { sendInquiryNotification } from "@/lib/notifications";
 import { insertRow, isSupabaseConfigured } from "@/lib/supabase-admin";
 import { text, validateBase } from "@/lib/validation";
+import { rateLimit } from "@/lib/rate-limit";
 
 export async function POST(request: Request) {
+  const retryAfter = rateLimit(request, "contact", 10, 60_000);
+  if (retryAfter) return NextResponse.json({ message: "Too many attempts. Please wait before trying again." }, { status: 429, headers: { "Retry-After": String(retryAfter) } });
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > 100_000) return NextResponse.json({ message: "Submission is too large." }, { status: 413 });
   const form = await request.formData();

@@ -9,7 +9,9 @@ const AUTOPLAY_MS = 7500;
 
 export function DynamicHomeHero() {
   const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [manualPaused, setManualPaused] = useState(false);
+  const [interactionPaused, setInteractionPaused] = useState(false);
+  const paused = manualPaused || interactionPaused;
 
   const slides = [
     {
@@ -76,11 +78,11 @@ export function DynamicHomeHero() {
     <section
       className="home-dynamic-hero"
       aria-label="Bweza Pharmacy services"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
+      onMouseEnter={() => setInteractionPaused(true)}
+      onMouseLeave={() => setInteractionPaused(false)}
+      onFocusCapture={() => setInteractionPaused(true)}
       onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);
+        if (!event.currentTarget.contains(event.relatedTarget)) setInteractionPaused(false);
       }}
     >
       <div className="home-dynamic-media" aria-hidden="true">
@@ -146,6 +148,14 @@ export function DynamicHomeHero() {
               <span>{slide.tab}</span>
             </button>
           ))}
+          <button
+            type="button"
+            className="home-dynamic-pause"
+            aria-pressed={manualPaused}
+            onClick={() => setManualPaused((current) => !current)}
+          >
+            {manualPaused ? "Play slides" : "Pause slides"}
+          </button>
         </div>
       </div>
     </section>

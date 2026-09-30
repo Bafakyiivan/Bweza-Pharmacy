@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description:
     "Send a general enquiry or request a corporate quotation from Bweza Pharmacy in Kibuye, Kampala.",
   alternates: { canonical: "/enquiry" },
+  robots: { index: false, follow: true },
 };
 
 export default function EnquiryPage() {

@@ -2,10 +2,21 @@ import { NextResponse } from "next/server";
 import { sendInquiryNotification } from "@/lib/notifications";
 import { deletePrivatePrescription, insertRow, isSupabaseConfigured, uploadPrivatePrescription } from "@/lib/supabase-admin";
 import { text, validateBase } from "@/lib/validation";
+import { rateLimit } from "@/lib/rate-limit";
 
 const allowed = new Set(["image/jpeg", "image/png", "application/pdf"]);
 
+async function hasValidSignature(file: File) {
+  const bytes = new Uint8Array(await file.slice(0, 8).arrayBuffer());
+  if (file.type === "image/jpeg") return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+  if (file.type === "image/png") return bytes.length >= 8 && [0x89,0x50,0x4e,0x47,0x0d,0x0a,0x1a,0x0a].every((value, index) => bytes[index] === value);
+  if (file.type === "application/pdf") return String.fromCharCode(...bytes.slice(0, 5)) === "%PDF-";
+  return false;
+}
+
 export async function POST(request: Request) {
+  const retryAfter = rateLimit(request, "prescription", 5, 60_000);
+  if (retryAfter) return NextResponse.json({ message: "Too many attempts. Please wait before trying again." }, { status: 429, headers: { "Retry-After": String(retryAfter) } });
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > 5_500_000) return NextResponse.json({ message: "The prescription file must be 5 MB or smaller." }, { status: 413 });
   const form = await request.formData();
@@ -14,7 +25,7 @@ export async function POST(request: Request) {
   if (text(form, "consent", 10) !== "yes") return NextResponse.json({ message: "Consent is required before submitting health information." }, { status: 400 });
   const file = form.get("prescription");
   if (!(file instanceof File) || file.size === 0) return NextResponse.json({ message: "Please attach a prescription file." }, { status: 400 });
-  if (file.size > 5_000_000 || !allowed.has(file.type)) return NextResponse.json({ message: "Use a JPEG, PNG or PDF file no larger than 5 MB." }, { status: 400 });
+  if (file.size > 5_000_000 || !allowed.has(file.type) || !(await hasValidSignature(file))) return NextResponse.json({ message: "Use a valid JPEG, PNG or PDF file no larger than 5 MB." }, { status: 400 });
   if (!isSupabaseConfigured()) return NextResponse.json({ message: "Secure prescription delivery is awaiting final setup. Please use phone or WhatsApp." }, { status: 503 });
   const id = crypto.randomUUID();
   const extension = file.type === "application/pdf" ? "pdf" : file.type === "image/png" ? "png" : "jpg";

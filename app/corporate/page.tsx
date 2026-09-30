@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { GoogleEnquiryForm } from "@/components/google-enquiry-form";
 import { SectionReveals } from "@/components/section-reveals";
-import { emailHref, isExternalWhatsApp, whatsappHref } from "@/lib/site";
+import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Corporate Medical Supplies",
   description: "Request medicines, first-aid items and medical supplies for businesses, clinics, NGOs, schools, construction and oil and gas operations in Uganda.",
   alternates: { canonical: "/corporate" },
+  openGraph: { title: "Corporate Medical Supplies", description: "Request medicines, first-aid items and medical supplies for organisations across Uganda.", url: "/corporate", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Corporate Medical Supplies", description: "Request medicines, first-aid items and medical supplies for organisations across Uganda.", images: ["/images/pharmacy-counter.jpg"] },
 };
 
 const sectors = [
@@ -58,7 +59,6 @@ const assurances = [
 
 export default function CorporatePage() {
   const wa = whatsappHref("Hello Bweza Pharmacy, I am requesting a corporate quotation. Organisation: [name]. Items and quantities: [list]. Required date: [date]. Delivery location: [location].");
-  const corporateEmail = emailHref("Corporate Quotation Request");
 
   return (
     <>
@@ -144,19 +144,14 @@ export default function CorporatePage() {
       </section>
 
       <section className="section section-soft">
-        <div className="container form-shell">
-          <div>
-            <p className="eyebrow">Request a quotation</p>
-            <h2 className="heading" style={{ fontSize: "clamp(2rem,3.5vw,3rem)" }}>Tell us what <span>you need.</span></h2>
-            <p className="lead">Include item names, quantities, delivery location and required date.</p>
-            <div className="notice"><strong>Please note:</strong> Supply is subject to availability, pharmacist review and applicable regulatory requirements.</div>
-            <div className="button-row">
-              <a className="button button-magenta" href={corporateEmail} data-conversion="email_click" data-intent="corporate_quotation" data-location="corporate_form">Email requirements or attach a file</a>
-              <a className="button button-secondary" href={wa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="corporate_enquiry" data-intent="corporate_quotation" data-location="corporate_form">Send requirements on WhatsApp</a>
+        <div className="container">
+          <div className="band">
+            <div>
+              <p className="eyebrow">Request a quotation</p>
+              <h2>Send your requirements in the way that suits you.</h2>
+              <p>Email a PDF or Excel list, use WhatsApp for a quick enquiry, or complete the online quotation form.</p>
             </div>
-          </div>
-          <div id="corporate-quotation-form">
-            <GoogleEnquiryForm context="corporate" />
+            <a className="button button-magenta" href="/corporate/request">Choose a request option</a>
           </div>
         </div>
       </section>

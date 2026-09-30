@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "Start a prescription request with Bweza Pharmacy on WhatsApp or use the secure website upload for pharmacist review.",
   alternates: { canonical: "/prescription" },
   robots: { index: true, follow: true },
+  openGraph: { title: "Prescription Review", description: "Start a private prescription request for pharmacist review at Bweza Pharmacy.", url: "/prescription", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Prescription Review", description: "Start a private prescription request for pharmacist review at Bweza Pharmacy.", images: ["/images/pharmacy-counter.jpg"] },
 };
 
 export default function PrescriptionPage() {

@@ -8,9 +8,16 @@ import { emailHref, isExternalWhatsApp, phoneHref, whatsappHref } from "@/lib/si
 
 const labels = { in_stock: "In stock", low_stock: "Low stock", out_of_stock: "Out of stock", coming_soon: "Coming soon" };
 
-export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
+function compactDescription(description: string) {
+  if (description.length <= 220) return description;
+  const excerpt = description.slice(0, 220);
+  const boundary = excerpt.lastIndexOf(" ");
+  return `${excerpt.slice(0, boundary > 160 ? boundary : 220).trim()}…`;
+}
+
+export function ProductCatalog({ products, initialCategory = "All products" }: { products: CatalogProduct[]; initialCategory?: string }) {
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("All products");
+  const [category, setCategory] = useState(() => products.some((product) => product.category === initialCategory) ? initialCategory : "All products");
   const deferredQuery = useDeferredValue(query.trim().toLowerCase());
   const categories = useMemo(() => ["All products", ...Array.from(new Set(products.map((product) => product.category)))], [products]);
   const visible = useMemo(() => products.filter((product) => {
@@ -35,7 +42,7 @@ export function ProductCatalog({ products }: { products: CatalogProduct[] }) {
         <div className="product-image">{product.image_url ? <Image src={product.image_url} alt={`${product.name} product`} fill sizes="(max-width: 680px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <span aria-hidden="true">BP</span>}</div>
         <div className="product-card-body">
           <div className="product-meta"><span>{product.category}</span><span className={`stock stock-${product.stock_status}`}>{labels[product.stock_status]}</span></div>
-          <h2>{product.name}</h2>{product.pack_size ? <p className="product-pack">{product.pack_size}</p> : null}<p>{product.description}</p>
+          <h2>{product.name}</h2>{product.pack_size ? <p className="product-pack">{product.pack_size}</p> : null}<p className="product-description-preview">{compactDescription(product.description)}</p>{product.description.length > 220 ? <details className="product-details"><summary>View full product information</summary><p>{product.description}</p></details> : null}
           <div className="product-price">{product.show_price && product.price_ugx ? `UGX ${product.price_ugx.toLocaleString("en-UG")}` : "Ask for price"}</div>
           {product.requires_prescription ? <Link className="button" href="/prescription">Contact our pharmacist</Link> : <a className={`button${available ? "" : " button-secondary"}`} href={whatsappHref(message)} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="product_enquiry" data-location="product_catalogue">{available ? "Order on WhatsApp" : "Ask about availability"}</a>}
         </div>
