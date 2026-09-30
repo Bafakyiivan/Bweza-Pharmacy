@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Request Corporate Supplies",
   description: "Send your corporate medical-supply requirements to Bweza Pharmacy by email, WhatsApp or online quotation form.",
   alternates: { canonical: "/corporate/request" },
+  robots: { index: false, follow: true },
 };
 
 export default function CorporateRequestPage() {
