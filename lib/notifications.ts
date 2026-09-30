@@ -45,7 +45,7 @@ export async function sendInquiryNotification(notification: Notification) {
           "",
           "Open the secure Supabase dashboard to review and respond.",
           "No customer contact details, enquiry message or prescription file are included in this email.",
-        ].join("\\n"),
+        ].join("\n"),
       }),
       cache: "no-store",
       signal: AbortSignal.timeout(8_000),
