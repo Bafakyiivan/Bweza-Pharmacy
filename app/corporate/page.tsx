@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   title: "Corporate Medical Supplies",
   description: "Request medicines, first-aid items and medical supplies for businesses, clinics, NGOs, schools, construction and oil and gas operations in Uganda.",
   alternates: { canonical: "/corporate" },
+  openGraph: { title: "Corporate Medical Supplies", description: "Request medicines, first-aid items and medical supplies for organisations across Uganda.", url: "/corporate", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Corporate Medical Supplies", description: "Request medicines, first-aid items and medical supplies for organisations across Uganda.", images: ["/images/pharmacy-counter.jpg"] },
 };
 
 const sectors = [
