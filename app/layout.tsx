@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: { default: "Bweza Pharmacy | Pharmacy Services in Kampala", template: "%s | Bweza Pharmacy" },
   description: site.description,
   alternates: { canonical: "/" },
-  openGraph: { type: "website", locale: "en_UG", siteName: site.name, title: site.name, description: site.description, url: "/" },
-  twitter: { card: "summary", title: site.name, description: site.description },
+  openGraph: { type: "website", locale: "en_UG", siteName: site.name, title: site.name, description: site.description, url: "/", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: site.name, description: site.description, images: ["/images/pharmacy-counter.jpg"] },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
