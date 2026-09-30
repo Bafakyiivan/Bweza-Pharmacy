@@ -4,7 +4,9 @@ import { ProductCatalog } from "@/components/product-catalog";
 import { CtaBand } from "@/components/cta-band";
 import { listProducts } from "@/lib/catalog";
 
-export const metadata: Metadata = { title: "Product Catalogue", description: "Browse pharmacy products available from Bweza Pharmacy in Kibuye, Kampala.", alternates: { canonical: "/products" } };
+export const metadata: Metadata = { title: "Product Catalogue", description: "Browse pharmacy products available from Bweza Pharmacy in Kibuye, Kampala.", alternates: { canonical: "/products" }   openGraph: { title: "Product Catalogue", description: "Browse selected wellness, first-aid and health products from Bweza Pharmacy in Kibuye, Kampala.", url: "/products", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Product Catalogue", description: "Browse selected wellness, first-aid and health products from Bweza Pharmacy in Kibuye, Kampala.", images: ["/images/pharmacy-counter.jpg"] },
+};
 export const dynamic = "force-dynamic";
 
 export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ category?: string }> }) {
