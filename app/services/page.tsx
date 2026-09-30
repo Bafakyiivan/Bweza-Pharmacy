@@ -4,7 +4,9 @@ import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
 import { isExternalWhatsApp, whatsappHref } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Pharmacy Services", description: "Explore prescription, product, delivery and corporate pharmacy services in Kibuye, Kampala.", alternates: { canonical: "/services" } };
+export const metadata: Metadata = { title: "Pharmacy Services", description: "Explore prescription, product, delivery and corporate pharmacy services in Kibuye, Kampala.", alternates: { canonical: "/services" }   openGraph: { title: "Pharmacy Services", description: "Explore prescription, product, delivery and corporate pharmacy services in Kibuye, Kampala.", url: "/services", images: [{ url: "/images/pharmacy-counter.jpg", alt: "Bweza Pharmacy in Kibuye, Kampala" }] },
+  twitter: { card: "summary_large_image", title: "Pharmacy Services", description: "Explore prescription, product, delivery and corporate pharmacy services in Kibuye, Kampala.", images: ["/images/pharmacy-counter.jpg"] },
+};
 
 export default function ServicesPage() {
   const productWa = whatsappHref("Hello Bweza Pharmacy, I would like help with a product or medication enquiry.");
