@@ -23,7 +23,7 @@ export function ConversionTracker() {
       const parameters = {
         intent: link.dataset.intent || "general",
         location: link.dataset.location || window.location.pathname,
-        destination: link instanceof HTMLAnchorElement ? link.href : undefined,
+        page_path: window.location.pathname,
       };
 
       window.gtag?.("event", eventName, parameters);
