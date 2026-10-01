@@ -28,8 +28,8 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-10-02",
     updatedAt: "2026-10-02",
     readTime: "5 min read",
-    image: "/images/pharmacy-counter.jpg",
-    imageAlt: "Bweza Pharmacy team inside the Kibuye pharmacy",
+    image: "/images/blog/know-your-blood-pressure.webp",
+    imageAlt: "Bweza Pharmacy blood-pressure awareness graphic showing a pharmacist speaking with a customer",
     sections: [
       {
         heading: "Why blood pressure matters",
