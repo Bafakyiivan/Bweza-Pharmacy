@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         <div className="container blog-article-layout">
           <div className="blog-article-main">
-            <div className="blog-article-image">
+            <div className={`blog-article-image${post.slug === "understanding-high-blood-pressure" ? " blog-article-image-poster" : ""}`}>
               <Image src={post.image} alt={post.imageAlt} fill priority sizes="(max-width: 900px) 100vw, 760px" />
             </div>
 
