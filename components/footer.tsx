@@ -14,7 +14,7 @@ export function Footer() {
               <Link href="/" className="brand"><Image src="/images/bweza-logo.jpg" alt="" width={697} height={560} /><span>Bweza Pharmacy</span></Link>
               <p>{site.description}</p>
             </div>
-            <div><div className="footer-title">Explore</div><div className="footer-links"><Link href="/products">Products</Link><Link href="/services">Services</Link><Link href="/about">About us</Link></div></div>
+            <div><div className="footer-title">Explore</div><div className="footer-links"><Link href="/products">Products</Link><Link href="/services">Services</Link><Link href="/blog">Health guides</Link><Link href="/about">About us</Link></div></div>
             <div><div className="footer-title">Get help</div><div className="footer-links"><Link href="/enquiry" data-conversion="enquiry_page_click" data-intent="general_or_corporate_enquiry" data-location="footer">Online enquiry</Link><Link href="/prescription">Prescription inquiry</Link><Link href="/corporate">Corporate procurement</Link><Link href="/contact">Contact</Link><Link href="/feedback" data-conversion="feedback_page_click" data-intent="client_feedback" data-location="footer">Share feedback</Link></div></div>
             <div><div className="footer-title">Visit</div><div className="footer-links"><span>{site.location}</span><a href={phoneHref()} data-conversion="phone_click" data-intent="general" data-location="footer">Call {site.phone}</a><a href={site.directionsUrl} target="_blank" rel="noreferrer" data-conversion="directions_click" data-intent="visit" data-location="footer">Get directions</a><span>{site.hours || "Business hours: awaiting confirmation"}</span><Link href="/privacy">Privacy notice</Link></div></div>
           </div>

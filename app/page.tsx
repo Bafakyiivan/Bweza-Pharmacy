@@ -4,6 +4,8 @@ import { Arrow, Message } from "@/components/icons";
 import { CtaBand } from "@/components/cta-band";
 import { DynamicHomeHero } from "@/components/dynamic-home-hero";
 import { SectionReveals } from "@/components/section-reveals";
+import { BlogCard } from "@/components/blog-card";
+import { blogPosts } from "@/lib/blog";
 import { isExternalWhatsApp, phoneHref, site, whatsappHref } from "@/lib/site";
 
 const categories = [
@@ -26,6 +28,6 @@ export default function Home() {
     <section className="section section-soft"><div className="container split"><div><p className="eyebrow">Delivery across Uganda</p><h2 className="heading">Ask about delivery to <span>your location.</span></h2><p className="lead">Send your location, product and quantity on WhatsApp. We will confirm availability, timing and delivery fees.</p><div className="button-row"><a className="button button-magenta" href={deliveryWa} target={isExternalWhatsApp ? "_blank" : undefined} rel={isExternalWhatsApp ? "noreferrer" : undefined} data-conversion="whatsapp_click" data-intent="delivery_enquiry" data-location="home_delivery"><Message /> Ask about delivery</a></div></div><div className="photo-main" style={{position:"relative", inset:"auto", minHeight:430}}><Image src="/images/pharmacy-shelves.jpg" alt="Wide view of products inside Bweza Pharmacy" fill sizes="(max-width: 1000px) 100vw, 46vw" /></div></div></section>
 
     <section className="section"><div className="container split"><div><p className="eyebrow">Corporate procurement</p><h2 className="heading">A clear supply route for <span>organisations.</span></h2><p className="lead">Medicines, first-aid items and medical supplies for workplaces, clinics, schools, NGOs and field operations.</p><ul className="check-list"><li><b>✓</b><span>Clear quotation process</span></li><li><b>✓</b><span>Medicine, first-aid and medical supplies</span></li><li><b>✓</b><span>Delivery planning across Uganda</span></li></ul><div className="button-row"><Link className="button button-magenta" href="/corporate">Request a quote <Arrow /></Link></div></div><div className="photo-main photo-contain" style={{position:"relative", inset:"auto", minHeight:430}}><Image src="/images/pharmacy-counter.jpg" alt="Bweza Pharmacy team members inside the Kibuye pharmacy" fill sizes="(max-width: 1000px) 100vw, 46vw" /></div></div></section>
-    <CtaBand />
+    <section className="section section-soft"><div className="container"><div className="section-head"><div><p className="eyebrow">Health guides</p><h2 className="heading">Clear information for <span>healthier decisions.</span></h2></div><p className="lead">Practical guidance on prevention, medicine safety and when to seek professional care.</p></div><div className="blog-grid">{blogPosts.slice(0, 3).map((post)=><BlogCard post={post} key={post.slug} />)}</div><div className="button-row blog-home-more"><Link className="button button-secondary" href="/blog">View all health guides <Arrow /></Link></div></div></section>\n    <CtaBand />
   </>;
 }

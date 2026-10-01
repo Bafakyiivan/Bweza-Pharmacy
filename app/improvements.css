@@ -62,3 +62,161 @@
   .analytics-consent-actions { display: grid; grid-template-columns: 1fr 1fr; }
   .home-dynamic-pause { grid-column: 1 / -1; margin-left: 0; }
 }
+
+
+/* Health guides */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 34px;
+}
+.blog-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 12px 36px rgba(8, 54, 32, .07);
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: var(--shadow);
+}
+.blog-card-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--green-soft);
+}
+.blog-card-image img {
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+.blog-card:hover .blog-card-image img { transform: scale(1.035); }
+.blog-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 24px;
+}
+.blog-card-body h2 {
+  margin: 15px 0 10px;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.blog-card-body h2 a:hover { color: var(--green); }
+.blog-card-body > p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.58;
+}
+.blog-card-body .card-link { margin-top: auto; padding-top: 22px; }
+.blog-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 7px 14px;
+  color: var(--muted);
+  font-size: .76rem;
+  font-weight: 800;
+}
+.blog-meta span { color: var(--green); text-transform: uppercase; letter-spacing: .07em; }
+.blog-home-more { justify-content: center; margin-top: 32px; }
+.blog-disclaimer { margin-bottom: 34px; }
+
+.blog-article-header {
+  padding: 72px 0 64px;
+  background: linear-gradient(135deg, var(--green-soft), #fff 70%);
+}
+.blog-article-heading { max-width: 900px; }
+.blog-article-heading .display { max-width: 850px; }
+.blog-byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 28px;
+  color: #476054;
+  font-size: .86rem;
+  font-weight: 750;
+}
+.blog-article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 780px);
+  justify-content: center;
+  padding-top: 56px;
+  padding-bottom: 88px;
+}
+.blog-article-image {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-bottom: 34px;
+  border-radius: 28px;
+  background: var(--green-soft);
+  box-shadow: var(--shadow);
+}
+.blog-article-image img { object-fit: cover; }
+.blog-section { padding: 12px 0 8px; }
+.blog-section h2, .blog-sources h2 {
+  margin: 26px 0 14px;
+  font-size: clamp(1.55rem, 3vw, 2rem);
+  letter-spacing: -.03em;
+}
+.blog-section p {
+  margin: 0 0 18px;
+  color: #334b3f;
+  font-size: 1.03rem;
+  line-height: 1.72;
+}
+.blog-section ul {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 22px;
+  padding-left: 22px;
+  color: #334b3f;
+  line-height: 1.62;
+}
+.blog-section li::marker { color: var(--green); }
+.blog-callout {
+  margin: 26px 0;
+  padding: 20px 22px;
+  border-left: 5px solid var(--magenta);
+  border-radius: 0 16px 16px 0;
+  background: #fff2fa;
+  color: #543348;
+  font-weight: 750;
+  line-height: 1.58;
+}
+.blog-sources {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.blog-sources ul { padding-left: 20px; line-height: 1.8; }
+.blog-sources a { color: var(--green); font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+.blog-article-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 38px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 1000px) {
+  .blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-article-header { padding: 52px 0 48px; }
+  .blog-article-layout { padding-top: 34px; padding-bottom: 64px; }
+  .blog-article-image { border-radius: 20px; }
+  .blog-card-body { padding: 21px; }
+}
