@@ -220,3 +220,12 @@
   .blog-article-image { border-radius: 20px; }
   .blog-card-body { padding: 21px; }
 }
+
+.blog-card-image-poster img { object-fit: contain; background: #fff; }
+.blog-article-image-poster {
+  aspect-ratio: 1 / 1;
+  max-width: 720px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.blog-article-image-poster img { object-fit: contain; background: #fff; }
