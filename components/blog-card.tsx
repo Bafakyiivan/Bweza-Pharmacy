@@ -6,7 +6,7 @@ import { formatBlogDate } from "@/lib/blog";
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <article className="blog-card">
-      <Link className={`blog-card-image${post.slug === "understanding-high-blood-pressure" ? " blog-card-image-poster" : ""}`} href={`/blog/${post.slug}`} aria-label={`Read ${post.title}`}>
+      <Link className={`blog-card-image${["understanding-high-blood-pressure", "know-your-blood-sugar-and-diabetes-risk"].includes(post.slug) ? " blog-card-image-poster" : ""}`} href={`/blog/${post.slug}`} aria-label={`Read ${post.title}`}>
         <Image src={post.image} alt={post.imageAlt} fill sizes="(max-width: 680px) 100vw, (max-width: 1000px) 50vw, 33vw" />
       </Link>
       <div className="blog-card-body">
