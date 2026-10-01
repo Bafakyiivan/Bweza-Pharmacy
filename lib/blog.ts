@@ -125,8 +125,8 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-10-02",
     updatedAt: "2026-10-02",
     readTime: "5 min read",
-    image: "/images/pharmacy-interior.jpg",
-    imageAlt: "Bweza Pharmacy team member ready to support customers",
+    image: "/images/blog/know-your-blood-sugar.webp",
+    imageAlt: "Bweza Pharmacy blood-sugar awareness graphic showing a pharmacist speaking with a customer",
     sections: [
       {
         heading: "What diabetes means",
