@@ -21,6 +21,60 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "ebola-update-uganda-outbreak-status",
+    title: "Ebola update: Uganda’s outbreak has ended",
+    description: "Uganda has ended its 2026 Ebola outbreak, but early reporting and continued vigilance remain important while an outbreak continues in the Democratic Republic of the Congo.",
+    category: "Public health update",
+    publishedAt: "2026-10-05",
+    updatedAt: "2026-10-05",
+    readTime: "5 min read",
+    image: "/images/blog/ebola-update-uganda.webp",
+    imageAlt: "Bweza Pharmacy Ebola update showing a Ugandan health worker explaining that Uganda’s outbreak has ended",
+    sections: [
+      {
+        heading: "Uganda’s current status",
+        paragraphs: [
+          "As of 5 October 2026, Uganda is not reporting an active Ebola outbreak. The World Health Organization confirmed the outbreak ended on 27 August 2026 after 42 consecutive days without a new confirmed case following the discharge of the last imported patient on 16 July.",
+          "During the outbreak, Uganda reported 20 confirmed cases of Bundibugyo virus disease: 15 imported and five locally acquired. Eighteen people recovered, two died and more than 800 contacts were monitored."
+        ],
+        callout: "An outbreak being declared over does not remove the risk of a future imported case. Uganda remains on alert."
+      },
+      {
+        heading: "Why vigilance still matters",
+        paragraphs: [
+          "The Ebola outbreak in the Democratic Republic of the Congo remains active. Frequent cross-border travel, trade and family connections mean Uganda must maintain surveillance, laboratory readiness, infection prevention and rapid investigation of alerts.",
+          "Use updates from the Uganda Ministry of Health and the World Health Organization, and avoid circulating unverified messages."
+        ]
+      },
+      {
+        heading: "How Ebola can spread",
+        bullets: [
+          "Direct contact with blood or other body fluids of a person who is ill with or has died from Ebola.",
+          "Contact with items contaminated by those fluids, such as bedding, clothing or medical equipment.",
+          "Contact with infected wildlife or raw meat from affected animals."
+        ]
+      },
+      {
+        heading: "Symptoms and what to do",
+        paragraphs: [
+          "Possible symptoms include fever, severe weakness, headache, muscle pain, vomiting, diarrhoea and stomach pain. Unexplained bleeding or bruising can occur later, but many early symptoms can also be caused by more common illnesses."
+        ],
+        bullets: [
+          "If you develop compatible symptoms after travel to an affected area or contact with a suspected case, separate from others and do not travel.",
+          "Call a health facility or the Ministry of Health before arriving so staff can prepare safely.",
+          "Do not self-diagnose or hide relevant travel or contact history."
+        ],
+        callout: "Uganda Ministry of Health toll-free line: 0800 100 066. For an emergency, seek urgent professional help."
+      }
+    ],
+    sources: [
+      { label: "Uganda Ministry of Health: Uganda is officially Ebola free", url: "https://health.go.ug/uganda-is-officially-ebola-free" },
+      { label: "WHO Africa: Uganda ends Ebola outbreak", url: "https://www.afro.who.int/countries/uganda/news/uganda-ends-ebola-outbreak-following-completion-42-day-countdown" },
+      { label: "WHO: Ebola outbreak in the Democratic Republic of the Congo", url: "https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026" },
+      { label: "CDC: Ebola in Uganda and the Democratic Republic of the Congo", url: "https://wwwnc.cdc.gov/travel/notices/level2/ebola-drc-uganda" }
+    ]
+  },
+  {
     slug: "understanding-high-blood-pressure",
     title: "Understanding high blood pressure",
     description: "Why regular blood-pressure checks matter, common risk factors and when to seek urgent care.",
