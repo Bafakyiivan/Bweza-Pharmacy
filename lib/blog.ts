@@ -77,8 +77,8 @@ export const blogPosts: BlogPost[] = [
     publishedAt: "2026-10-02",
     updatedAt: "2026-10-02",
     readTime: "5 min read",
-    image: "/images/pharmacy-shelves.jpg",
-    imageAlt: "Medicine and wellness-product shelves inside Bweza Pharmacy",
+    image: "/images/blog/use-medicines-safely.webp",
+    imageAlt: "Bweza Pharmacy medicine-safety awareness graphic showing a pharmacist helping a customer review medicine instructions",
     sections: [
       {
         heading: "Know, check and ask",
